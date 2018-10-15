@@ -16,18 +16,19 @@
 <%@include file="nav.jsp"%>
 <%-- container --%>
 <div class="container" id="">
-<div class="jumbotron">
-    <h1 class="display-3">Welcome to Mr.KKu Island!</h1>
-    <p class="lead">신비로운 게시판이 완성될 예정 입니다.</p>
-    <hr class="my-4">
-    <p>JSP 수업시간에 과제를 미리 셋팅하는 중이랍니다.</p>
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-</div>
 
-    <button type="button" class="btn btn-primary">Primary</button>
-</div>
+    <%-- 메인알림창 --%>
+    <%@include file="container.jsp"%>
+    <%-- 다른 카드 --%>
+    <%@include file="cardHeader.jsp"%>
+    <%-- 리스트 그룹 --%>
+    <%@include file="listGroup.jsp"%>
+
+    <%-- 카드부분 --%>
+    <%@include file="card.jsp"%>
+    
+
+</div><%-- container --%>
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

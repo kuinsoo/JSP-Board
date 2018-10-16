@@ -19,6 +19,10 @@
 
     <%-- 메인알림창 --%>
     <%@include file="container.jsp"%>
+    <%-- 폼창 --%>
+    <%@include file="forms.jsp"%>
+    <%-- 모달창 --%>
+    <%@include file="modal.jsp"%>
     <%-- 다른 카드 --%>
     <%@include file="cardHeader.jsp"%>
     <%-- 리스트 그룹 --%>
@@ -26,17 +30,10 @@
 
     <%-- 카드부분 --%>
     <%@include file="card.jsp"%>
-    
 
 </div><%-- container --%>
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
 </body>
 <%-- footer --%>
 <%@include file="footer.jsp"%>

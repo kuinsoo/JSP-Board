@@ -65,10 +65,10 @@
 
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a>
+                    <a class="nav-link" href="http://builtwithbootstrap.com/" target="_blank">로그인</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a>
+                    <a class="nav-link" href="https://wrapbootstrap.com/?ref=bsw" target="_blank">회원가입</a>
                 </li>
             </ul>
 

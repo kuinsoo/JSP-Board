@@ -1,4 +1,4 @@
-package kr.or.ddit.board.model;
+package kr.or.ddit.member.model;
 
 import com.sun.xml.internal.bind.v2.model.core.ID;
 

@@ -12,7 +12,7 @@
 		<typeAlias type="kr.or.ddit.board.model.AttachmentVo" alias="attVo" />
 		<typeAlias type="kr.or.ddit.board.model.BoardVo" alias="bdVo" />
 		<typeAlias type="kr.or.ddit.board.model.CommentsVo" alias="cmdVo" />
-		<typeAlias type="kr.or.ddit.board.model.MemberVo" alias="memVo" />
+		<typeAlias type="kr.or.ddit.member.model.MemberVo" alias="memVo" />
 		<typeAlias type="kr.or.ddit.board.model.PostVo" alias="ptVo" />
 	</typeAliases>
 
@@ -34,7 +34,7 @@
 	
 	<mappers>
 		<!-- Mapper 위치 지정 -->
-		<mapper resource="kr/or/ddit/config/db/memberVo.xml" />
+		<mapper resource="kr/or/ddit/config/db/member.xml" />
 	</mappers>
 	
 </configuration>

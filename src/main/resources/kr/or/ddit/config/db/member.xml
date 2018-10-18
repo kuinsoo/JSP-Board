@@ -11,7 +11,7 @@
 
     <!-- 회원 검색 -->
     <select id="selectMember" resultType="memVo" parameterType="String">
-        select * from member where ID = #{user_id}
+        select * from member where ID = #{mem_id}
     </select>
 
 </mapper>

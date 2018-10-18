@@ -1,7 +1,8 @@
 package kr.or.ddit.member.dao;
 
-import kr.or.ddit.member.model.MemberVo;
 
+
+import kr.or.ddit.member.model.MemberVo;
 import org.junit.Assert;
 import org.junit.After;
 import org.junit.Before;
@@ -44,13 +45,12 @@ public class MemberDaoTest {
 	}
 
 	@Test
-	public void selectMember() {
+	public void selectMemberTest() {
 		/*** Given ***/
 		String mem_id = "brown";
 		/*** When ***/
 		MemberVo memVo = dao.selectMember(mem_id);
 		/*** Then ***/
-		System.out.println(memVo.getMem_name());
 		Assert.assertEquals(memVo.getMem_name(), "브라운");
 	}
 

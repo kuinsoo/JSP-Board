@@ -17,15 +17,15 @@ import java.util.List;
  * @Version :
  */
 public class MemberDao implements MemberDaoInf {
-	static MemberDao boardDao;
-	private SqlSessionFactory factory = SqlSessionFactoryBean.sessionFactory;
+	static MemberDao memberDao;
+	SqlSessionFactory factory = SqlSessionFactoryBean.sessionFactory;
 
 	// Singleton 적용
 	public static MemberDao getInstance() {
-		if( boardDao == null ) {
-			boardDao = new MemberDao();
+		if( memberDao == null ) {
+			memberDao = new MemberDao();
 		}
-		return boardDao;
+		return memberDao;
 	}
 
 
@@ -50,8 +50,9 @@ public class MemberDao implements MemberDaoInf {
 	@Override
 	public MemberVo selectMember(String mem_id) {
 		SqlSession session = factory.openSession();
-		MemberVo memVo = session.selectOne("member.selectMember",mem_id);
+		MemberVo memberVo = session.selectOne("member.selectMember", mem_id);
+		//오픈한 세션을 닫아 준다.
 		session.close();
-		return memVo;
+		return memberVo;
 	}
 }

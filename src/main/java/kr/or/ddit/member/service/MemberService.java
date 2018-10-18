@@ -16,6 +16,15 @@ import java.util.List;
  * @Version :
  */
 public class MemberService implements MemberServiceInf {
+	static MemberService memberService;
+	// Singleton 적용
+	public static MemberService getInstance() {
+		if( memberService == null ) {
+			memberService = new MemberService();
+		}
+		return memberService;
+	}
+
 
 	MemberDaoInf dao = MemberDao.getInstance();
 

@@ -15,98 +15,98 @@ import java.util.Date;
  */
 public class MemberVo {
 
-	private String ID;
-	private String NAME;
-	private String PASS;
-	private String TEL;
-	private Date   BIRTH;
-	private String EMAIL;
-	private String ZIPCODE;
-	private String ADDR1;
-	private String ADDR2;
-	private String PROFILE;
+	private String mem_id;
+	private String mem_name;
+	private String mem_pass;
+	private String mem_tel;
+	private Date   mem_birth;
+	private String mem_email;
+	private String mem_zipcode;
+	private String mem_addr1;
+	private String mem_addr2;
+	private String mem_profile;
 
 
 	public MemberVo() {
 	}
 
-	public String getID() {
-		return ID;
+	public String getMem_id() {
+		return mem_id;
 	}
 
-	public void setID(String ID) {
-		this.ID = ID;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
-	public String getNAME() {
-		return NAME;
+	public String getMem_name() {
+		return mem_name;
 	}
 
-	public void setNAME(String NAME) {
-		this.NAME = NAME;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
-	public String getPASS() {
-		return PASS;
+	public String getMem_pass() {
+		return mem_pass;
 	}
 
-	public void setPASS(String PASS) {
-		this.PASS = PASS;
+	public void setMem_pass(String mem_pass) {
+		this.mem_pass = mem_pass;
 	}
 
-	public String getTEL() {
-		return TEL;
+	public String getMem_tel() {
+		return mem_tel;
 	}
 
-	public void setTEL(String TEL) {
-		this.TEL = TEL;
+	public void setMem_tel(String mem_tel) {
+		this.mem_tel = mem_tel;
 	}
 
-	public Date getBIRTH() {
-		return BIRTH;
+	public Date getMem_birth() {
+		return mem_birth;
 	}
 
-	public void setBIRTH(Date BIRTH) {
-		this.BIRTH = BIRTH;
+	public void setMem_birth(Date mem_birth) {
+		this.mem_birth = mem_birth;
 	}
 
-	public String getEMAIL() {
-		return EMAIL;
+	public String getMem_email() {
+		return mem_email;
 	}
 
-	public void setEMAIL(String EMAIL) {
-		this.EMAIL = EMAIL;
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
 	}
 
-	public String getZIPCODE() {
-		return ZIPCODE;
+	public String getMem_zipcode() {
+		return mem_zipcode;
 	}
 
-	public void setZIPCODE(String ZIPCODE) {
-		this.ZIPCODE = ZIPCODE;
+	public void setMem_zipcode(String mem_zipcode) {
+		this.mem_zipcode = mem_zipcode;
 	}
 
-	public String getADDR1() {
-		return ADDR1;
+	public String getMem_addr1() {
+		return mem_addr1;
 	}
 
-	public void setADDR1(String ADDR1) {
-		this.ADDR1 = ADDR1;
+	public void setMem_addr1(String mem_addr1) {
+		this.mem_addr1 = mem_addr1;
 	}
 
-	public String getADDR2() {
-		return ADDR2;
+	public String getMem_addr2() {
+		return mem_addr2;
 	}
 
-	public void setADDR2(String ADDR2) {
-		this.ADDR2 = ADDR2;
+	public void setMem_addr2(String mem_addr2) {
+		this.mem_addr2 = mem_addr2;
 	}
 
-	public String getPROFILE() {
-		return PROFILE;
+	public String getMem_profile() {
+		return mem_profile;
 	}
 
-	public void setPROFILE(String PROFILE) {
-		this.PROFILE = PROFILE;
+	public void setMem_profile(String mem_profile) {
+		this.mem_profile = mem_profile;
 	}
 }

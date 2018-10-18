@@ -11,34 +11,34 @@ package kr.or.ddit.board.model;
  */
 public class AttachmentVo {
 
-	private String NO;
-	private String POSTNO;
-	private String ATT;
+	private String att_no;
+	private String att_postno;
+	private String att_att;
 
 	public AttachmentVo() {
 	}
 
-	public String getNO() {
-		return NO;
+	public String getAtt_no() {
+		return att_no;
 	}
 
-	public void setNO(String NO) {
-		this.NO = NO;
+	public void setAtt_no(String att_no) {
+		this.att_no = att_no;
 	}
 
-	public String getPOSTNO() {
-		return POSTNO;
+	public String getAtt_postno() {
+		return att_postno;
 	}
 
-	public void setPOSTNO(String POSTNO) {
-		this.POSTNO = POSTNO;
+	public void setAtt_postno(String att_postno) {
+		this.att_postno = att_postno;
 	}
 
-	public String getATT() {
-		return ATT;
+	public String getAtt_att() {
+		return att_att;
 	}
 
-	public void setATT(String ATT) {
-		this.ATT = ATT;
+	public void setAtt_att(String att_att) {
+		this.att_att = att_att;
 	}
 }

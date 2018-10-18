@@ -13,52 +13,52 @@ import java.util.Date;
  */
 public class CommentsVo {
 
-	private String  NO;
-	private String  POSTNO;
-	private String  CONTENT;
-	private String  WRITER;
-	private Date	RDATE;
+	private String  cmd_no;
+	private String  cmd_postno;
+	private String  cmd_content;
+	private String  cmd_writer;
+	private Date	cmd_rdate;
 
 	public CommentsVo() {
 	}
 
-	public String getNO() {
-		return NO;
+	public String getCmd_no() {
+		return cmd_no;
 	}
 
-	public void setNO(String NO) {
-		this.NO = NO;
+	public void setCmd_no(String cmd_no) {
+		this.cmd_no = cmd_no;
 	}
 
-	public String getPOSTNO() {
-		return POSTNO;
+	public String getCmd_postno() {
+		return cmd_postno;
 	}
 
-	public void setPOSTNO(String POSTNO) {
-		this.POSTNO = POSTNO;
+	public void setCmd_postno(String cmd_postno) {
+		this.cmd_postno = cmd_postno;
 	}
 
-	public String getCONTENT() {
-		return CONTENT;
+	public String getCmd_content() {
+		return cmd_content;
 	}
 
-	public void setCONTENT(String CONTENT) {
-		this.CONTENT = CONTENT;
+	public void setCmd_content(String cmd_content) {
+		this.cmd_content = cmd_content;
 	}
 
-	public String getWRITER() {
-		return WRITER;
+	public String getCmd_writer() {
+		return cmd_writer;
 	}
 
-	public void setWRITER(String WRITER) {
-		this.WRITER = WRITER;
+	public void setCmd_writer(String cmd_writer) {
+		this.cmd_writer = cmd_writer;
 	}
 
-	public Date getRDATE() {
-		return RDATE;
+	public Date getCmd_rdate() {
+		return cmd_rdate;
 	}
 
-	public void setRDATE(Date RDATE) {
-		this.RDATE = RDATE;
+	public void setCmd_rdate(Date cmd_rdate) {
+		this.cmd_rdate = cmd_rdate;
 	}
 }

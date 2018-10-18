@@ -13,79 +13,79 @@ import java.util.Date;
  */
 public class PostVo {
 
-	private String NO;
-	private String TITLE;
-	private String CONTENT;
-	private Date   RDATE;
-	private String WRITER;
-	private String BOARDNO;
-	private String RECURSION;
-	private String GROUPNO;
+	private String post_no;
+	private String post_title;
+	private String post_content;
+	private Date   post_rdate;
+	private String post_writer;
+	private String post_boardno;
+	private String post_recursion;
+	private String post_groupno;
 
 	public PostVo() {
 	}
 
-	public String getNO() {
-		return NO;
+	public String getPost_no() {
+		return post_no;
 	}
 
-	public void setNO(String NO) {
-		this.NO = NO;
+	public void setPost_no(String post_no) {
+		this.post_no = post_no;
 	}
 
-	public String getTITLE() {
-		return TITLE;
+	public String getPost_title() {
+		return post_title;
 	}
 
-	public void setTITLE(String TITLE) {
-		this.TITLE = TITLE;
+	public void setPost_title(String post_title) {
+		this.post_title = post_title;
 	}
 
-	public String getCONTENT() {
-		return CONTENT;
+	public String getPost_content() {
+		return post_content;
 	}
 
-	public void setCONTENT(String CONTENT) {
-		this.CONTENT = CONTENT;
+	public void setPost_content(String post_content) {
+		this.post_content = post_content;
 	}
 
-	public Date getRDATE() {
-		return RDATE;
+	public Date getPost_rdate() {
+		return post_rdate;
 	}
 
-	public void setRDATE(Date RDATE) {
-		this.RDATE = RDATE;
+	public void setPost_rdate(Date post_rdate) {
+		this.post_rdate = post_rdate;
 	}
 
-	public String getWRITER() {
-		return WRITER;
+	public String getPost_writer() {
+		return post_writer;
 	}
 
-	public void setWRITER(String WRITER) {
-		this.WRITER = WRITER;
+	public void setPost_writer(String post_writer) {
+		this.post_writer = post_writer;
 	}
 
-	public String getBOARDNO() {
-		return BOARDNO;
+	public String getPost_boardno() {
+		return post_boardno;
 	}
 
-	public void setBOARDNO(String BOARDNO) {
-		this.BOARDNO = BOARDNO;
+	public void setPost_boardno(String post_boardno) {
+		this.post_boardno = post_boardno;
 	}
 
-	public String getRECURSION() {
-		return RECURSION;
+	public String getPost_recursion() {
+		return post_recursion;
 	}
 
-	public void setRECURSION(String RECURSION) {
-		this.RECURSION = RECURSION;
+	public void setPost_recursion(String post_recursion) {
+		this.post_recursion = post_recursion;
 	}
 
-	public String getGROUPNO() {
-		return GROUPNO;
+	public String getPost_groupno() {
+		return post_groupno;
 	}
 
-	public void setGROUPNO(String GROUPNO) {
-		this.GROUPNO = GROUPNO;
+	public void setPost_groupno(String post_groupno) {
+		this.post_groupno = post_groupno;
 	}
 }

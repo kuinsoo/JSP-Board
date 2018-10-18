@@ -13,52 +13,52 @@ import java.util.Date;
  */
 public class BoardVo {
 
-	private String NO;
-	private String NAME;
-	private String USE;
-	private String CREATOR;
-	private Date   RDATE;
+	private String bd_no;
+	private String bd_name;
+	private String bd_use;
+	private String bd_creator;
+	private Date   bd_rdate;
 
 	public BoardVo() {
 	}
 
-	public String getNO() {
-		return NO;
+	public String getBd_no() {
+		return bd_no;
 	}
 
-	public void setNO(String NO) {
-		this.NO = NO;
+	public void setBd_no(String bd_no) {
+		this.bd_no = bd_no;
 	}
 
-	public String getNAME() {
-		return NAME;
+	public String getBd_name() {
+		return bd_name;
 	}
 
-	public void setNAME(String NAME) {
-		this.NAME = NAME;
+	public void setBd_name(String bd_name) {
+		this.bd_name = bd_name;
 	}
 
-	public String getUSE() {
-		return USE;
+	public String getBd_use() {
+		return bd_use;
 	}
 
-	public void setUSE(String USE) {
-		this.USE = USE;
+	public void setBd_use(String bd_use) {
+		this.bd_use = bd_use;
 	}
 
-	public String getCREATOR() {
-		return CREATOR;
+	public String getBd_creator() {
+		return bd_creator;
 	}
 
-	public void setCREATOR(String CREATOR) {
-		this.CREATOR = CREATOR;
+	public void setBd_creator(String bd_creator) {
+		this.bd_creator = bd_creator;
 	}
 
-	public Date getRDATE() {
-		return RDATE;
+	public Date getBd_rdate() {
+		return bd_rdate;
 	}
 
-	public void setRDATE(Date RDATE) {
-		this.RDATE = RDATE;
+	public void setBd_rdate(Date bd_rdate) {
+		this.bd_rdate = bd_rdate;
 	}
 }

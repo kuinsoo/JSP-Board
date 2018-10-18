@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- OracleDB.properties 위치 -->
+	<properties resource="kr/or/ddit/config/oracleDB.properties" />
+	
+	<!-- Vo alias 위치 지정 -->
+	<typeAliases>
+		<typeAlias type="kr.or.ddit.board.model.AttachmentVo" alias="attVo" />
+		<typeAlias type="kr.or.ddit.board.model.BoardVo" alias="bdVo" />
+		<typeAlias type="kr.or.ddit.board.model.CommentsVo" alias="cmdVo" />
+		<typeAlias type="kr.or.ddit.board.model.MemberVo" alias="memVo" />
+		<typeAlias type="kr.or.ddit.board.model.PostVo" alias="ptVo" />
+	</typeAliases>
+
+	<!-- Oracle Connect Info -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+<!-- 			<dataSource type="JNDI">
+				<property name="data_source" value="java:comp/env/jdbc/oracleDB" />
+			</dataSource> -->
+			<dataSource type="POOLED">
+			<property name="driver" 	value="${jdbc.driver}" 		/>
+			<property name="url" 		value="${jdbc.url}" 		/>
+			<property name="username" 	value="${jdbc.username}" 	/>
+			<property name="password" 	value="${jdbc.password}" 	/>
+		</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<!-- Mapper 위치 지정 -->
+		<mapper resource="kr/or/ddit/config/db/memberVo.xml" />
+	</mappers>
+	
+</configuration>

@@ -27,11 +27,43 @@ public class BoardDao implements BoardDaoInf {
 		return boardDao;
 	}
 
+	/**
+	 * 게시판 전체 조회
+	 * @return
+	 */
 	@Override
 	public List<BoardVo> selectAllBoard() {
 		SqlSession session = factory.openSession();
 		List<BoardVo> boardList = session.selectList("board.selectAllBoard");
 		session.close();
 		return boardList;
+	}
+
+	/**
+	 * 게시판 생성
+	 * @param boardVo
+	 * @return
+	 */
+	@Override
+	public int createBoard(BoardVo boardVo) {
+		SqlSession session = factory.openSession();
+		int resultCnt = session.insert("board.createBoard",boardVo);
+		session.commit();
+		session.close();
+		return resultCnt;
+	}
+
+	/**
+	 * 게시판 수정
+	 * @param boardVo
+	 * @return
+	 */
+	@Override
+	public int editBoard(BoardVo boardVo) {
+		SqlSession session = factory.openSession();
+		int resultCnt = session.update("board.editBoard",boardVo);
+		session.commit();
+		session.close();
+		return resultCnt;
 	}
 }

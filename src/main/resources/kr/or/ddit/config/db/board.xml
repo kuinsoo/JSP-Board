@@ -18,8 +18,14 @@
     </select>
 
 
-    <insert id="insertBoard" parameterType="boardVo">
+    <insert id="createBoard" parameterType="boardVo">
         insert into BOARD values
         ('BD' || seqBoard.nextval, #{bd_name}, #{bd_use}, #{bd_creator}, to_char(sysdate,'yyyy-MM-dd'))
     </insert>
+
+    <update id="editBoard" parameterType="boardVo">
+        update BOARD
+        set NAME=#{bd_name}, USE=#{bd_use}, CREATOR=#{bd_creator}
+        where NO = #{bd_no}
+    </update>
 </mapper>

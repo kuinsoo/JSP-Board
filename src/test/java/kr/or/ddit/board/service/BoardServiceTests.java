@@ -34,4 +34,17 @@ public class BoardServiceTests {
 
 		Assert.assertEquals(1,boardList.size());
 	}
+
+	@Test
+	public void createBoard() {
+
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBd_name("저런게시판");
+		boardVo.setBd_use("N");
+		boardVo.setBd_creator("brown");
+
+		int resultCnt = service.createBoard(boardVo);
+
+		Assert.assertEquals(1, resultCnt);
+	}
 }

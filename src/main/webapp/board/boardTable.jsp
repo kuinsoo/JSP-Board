@@ -9,16 +9,7 @@
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <style type="text/css">
-    .tdSet {
-        width: 200px;
-    }
-    #boardName{
-        background: #272B30;
-        border: none;
-        color: #fff;
-        width: 150px;
-    }
-    #theadeCul{
+     #theadeCul{
         line-height: 5;
         font-size: 18px;
         text-align: center;

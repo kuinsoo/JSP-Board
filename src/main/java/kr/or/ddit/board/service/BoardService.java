@@ -27,8 +27,32 @@ public class BoardService implements  BoardServiceInf{
 	}
 
 
+	/**
+	 * 전체 게시판 조회
+	 * @return
+	 */
 	@Override
 	public List<BoardVo> selectAllBoard() {
 		return dao.selectAllBoard();
+	}
+
+	/**
+	 * 게시판 생성
+	 * @param boardVo
+	 * @return
+	 */
+	@Override
+	public int createBoard(BoardVo boardVo) {
+		return dao.createBoard(boardVo);
+	}
+
+	/**
+	 * 게시판 수정
+	 * @param boardVo
+	 * @return
+	 */
+	@Override
+	public int editBoard(BoardVo boardVo) {
+		return dao.editBoard(boardVo);
 	}
 }

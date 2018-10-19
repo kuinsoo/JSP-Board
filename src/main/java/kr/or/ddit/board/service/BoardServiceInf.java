@@ -20,5 +20,19 @@ public interface BoardServiceInf {
 	 * 전체 게시판 조회
 	 * @return
 	 */
-	public List<BoardVo> selectAllBoard();
+	List<BoardVo> selectAllBoard();
+
+	/**
+	 * 게시판 생성
+	 * @param boardVo
+	 * @return
+	 */
+	int createBoard(BoardVo boardVo);
+
+	/**
+	 * 게시판 수정
+	 * @param boardVo
+	 * @return
+	 */
+	int editBoard(BoardVo boardVo);
 }

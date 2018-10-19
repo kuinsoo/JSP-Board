@@ -32,5 +32,23 @@ public class BoardDaoTest {
 		Assert.assertEquals(1,boardList.size());
 	}
 
+	@Test
+	public void createBoard() {
+
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBd_name("자유게시판");
+		boardVo.setBd_use("Y");
+		boardVo.setBd_creator("brown");
+
+		int resultCnt = dao.createBoard(boardVo);
+
+		Assert.assertEquals(1, resultCnt);
+	}
+
+	@Test
+	public void editBoard() {
+
+	}
+
 
 }

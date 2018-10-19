@@ -1,5 +1,9 @@
 package kr.or.ddit.board.service;
 
+import kr.or.ddit.board.model.BoardVo;
+
+import java.util.List;
+
 /**
  * kr.or.ddit.board.service
  * null.java
@@ -10,4 +14,11 @@ package kr.or.ddit.board.service;
  * @Version :
  */
 public interface BoardServiceInf {
+
+
+	/**
+	 * 전체 게시판 조회
+	 * @return
+	 */
+	public List<BoardVo> selectAllBoard();
 }

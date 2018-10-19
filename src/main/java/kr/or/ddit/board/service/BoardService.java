@@ -2,6 +2,9 @@ package kr.or.ddit.board.service;
 
 import kr.or.ddit.board.dao.BoardDao;
 import kr.or.ddit.board.dao.BoardDaoInf;
+import kr.or.ddit.board.model.BoardVo;
+
+import java.util.List;
 
 /**
  * kr.or.ddit.board.service
@@ -12,7 +15,7 @@ import kr.or.ddit.board.dao.BoardDaoInf;
  * @Date : 2018-10-19 / 오후 7:04
  * @Version :
  */
-public class BoardService {
+public class BoardService implements  BoardServiceInf{
 	private static BoardService boardService = null;
 	private BoardDaoInf dao = BoardDao.getInstance();
 
@@ -24,5 +27,8 @@ public class BoardService {
 	}
 
 
-
+	@Override
+	public List<BoardVo> selectAllBoard() {
+		return dao.selectAllBoard();
+	}
 }

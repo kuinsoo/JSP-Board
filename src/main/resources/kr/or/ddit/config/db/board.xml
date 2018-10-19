@@ -13,6 +13,8 @@
         <result property="bd_rdate" column="rdate"/>
     </resultMap>
 
-
+    <select id="selectAllBoard" resultMap="boardResult" >
+        select * from BOARD order by no asc
+    </select>
 
 </mapper>

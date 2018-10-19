@@ -17,4 +17,9 @@
         select * from BOARD order by no asc
     </select>
 
+
+    <insert id="insertBoard" parameterType="boardVo">
+        insert into BOARD values
+        ('BD' || seqBoard.nextval, #{bd_name}, #{bd_use}, #{bd_creator}, to_char(sysdate,'yyyy-MM-dd'))
+    </insert>
 </mapper>

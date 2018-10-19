@@ -31,4 +31,6 @@ public class BoardDaoTest {
 
 		Assert.assertEquals(1,boardList.size());
 	}
+
+
 }

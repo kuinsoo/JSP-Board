@@ -1,5 +1,8 @@
 package kr.or.ddit.board.web;
 
+import kr.or.ddit.board.model.BoardVo;
+import kr.or.ddit.board.service.BoardService;
+import kr.or.ddit.board.service.BoardServiceInf;
 import kr.or.ddit.member.encrypt.Sha256;
 import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.service.MemberService;
@@ -12,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 /**
  * ${PACKAGE_NAME}
@@ -22,21 +27,24 @@ import java.io.IOException;
  * @Date : 2018-10-19 / 오후 3:46
  * @Version :
  */
-@WebServlet(urlPatterns = {"/main", "/boardList"})
+@WebServlet(urlPatterns = {"/main", "/boardList" , "/boardInsert", "/boardUpdate"})
 public class BoardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		response.setContentType("text/html;  charset=UTF-8");
 
 		String uri = request.getRequestURI();
 
-		if(uri.equals("/main")){
+		if (uri.equals("/main")) {
 			locationMain(request, response);
-		}else if(uri.equals("/boardList")) {
-			locationBoardList(request,response);
+		} else if (uri.equals("/boardList")) {
+			locationBoardList(request, response);
+		} else if (uri.equals("/boardInsert")) {
+			locationBoardInsert(request,response);
 		}
 	}
 
@@ -45,6 +53,14 @@ public class BoardServlet extends HttpServlet {
 	}
 
 	private void locationBoardList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		BoardServiceInf boardService = BoardService.getInstance();
+		List<BoardVo> boardList = boardService.selectAllBoard();
+		request.setAttribute("boardList", boardList);
 		request.getRequestDispatcher("/board/board.jsp").forward(request,response);
+	}
+
+	private void locationBoardInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
 }

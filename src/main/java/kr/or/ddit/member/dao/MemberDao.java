@@ -39,10 +39,6 @@ public class MemberDao implements MemberDaoInf {
 		SqlSession session = factory.openSession();
 		List<MemberVo> memList = session.selectList("member.selectAllMember");
 		//오픈한 세션을 닫아 준다.
-		for (MemberVo vo :
-				memList) {
-			System.out.println("votest " + vo.getMem_name());
-		}
 		session.close();
 		return memList;
 	}
@@ -54,7 +50,6 @@ public class MemberDao implements MemberDaoInf {
 	@Override
 	public MemberVo selectMember(String mem_id) {
 		SqlSession session = factory.openSession();
-		System.out.println("mem_id " + mem_id);
 		MemberVo memberVo = session.selectOne("member.selectMember", mem_id);
 		//오픈한 세션을 닫아 준다.
 		session.close();

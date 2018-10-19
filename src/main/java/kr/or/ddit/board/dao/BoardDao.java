@@ -30,7 +30,7 @@ public class BoardDao implements BoardDaoInf {
 	@Override
 	public List<BoardVo> selectAllBoard() {
 		SqlSession session = factory.openSession();
-		List<BoardVo> boardList = session.selectOne("board.selectAllBoard");
+		List<BoardVo> boardList = session.selectList("board.selectAllBoard");
 		session.close();
 		return boardList;
 	}

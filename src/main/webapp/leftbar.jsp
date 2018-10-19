@@ -10,13 +10,17 @@
     #leftbar {
         position: absolute;
         height: 100%;
-        width: 250px;
+        width: 200px;
         left: 0px;
         top: 120px;
         z-index: 100;
         margin-bottom: -63px;
     }
+
+
 </style>
+
+
 <div id="leftbar">
     <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">

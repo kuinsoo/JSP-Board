@@ -15,14 +15,10 @@
 <body>
 <%-- nav --%>
 <%@include file="/nav.jsp"%>
-
 <%-- left bar --%>
 <%@include file="/leftbar.jsp"%>
-
-
 <%-- container --%>
 <div class="container" id="">
-
     <%-- 메인알림창 --%>
     <%@include file="/container.jsp"%>
     <%--

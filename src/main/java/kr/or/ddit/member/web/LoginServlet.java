@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		String encryptPass = Sha256.encrypt(memPass);
 		MemberVo memVo = service.selectMember(memId);
 
-		if(memVo != null && memVo.getMem_pass().equals(encryptPass)) {
+		if(memVo != null && memVo.getMem_pass().equalsIgnoreCase(encryptPass)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("memVo", memVo);
 			// 아이디와 패스워드가 일치하면 메인 페이지로 응답한다.

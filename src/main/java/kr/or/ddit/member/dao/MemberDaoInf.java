@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * kr.or.ddit.board.dao
  * null.java
- * Desc : 게시판 다오 인터페이스
+ * Desc : 회원 다오 인터페이스
  *
  * @Author : Mr.KKu
  * @Date : 2018-10-18 / 오후 6:25

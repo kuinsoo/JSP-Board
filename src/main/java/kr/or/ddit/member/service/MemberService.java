@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * kr.or.ddit.board.service
  * null.java
- * Desc : 게시판 서비스
+ * Desc : 회원 서비스
  *
  * @Author : Mr.KKu
  * @Date : 2018-10-18 / 오후 6:24

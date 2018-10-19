@@ -64,11 +64,14 @@
             </ul>
 
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://builtwithbootstrap.com/" target="_blank">로그인</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://wrapbootstrap.com/?ref=bsw" target="_blank">회원가입</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://wrapbootstrap.com/?ref=bsw" target="_blank">회원정보</a>
+                    <div class="dropdown-menu" aria-labelledby="download">
+                    <a class="dropdown-item" href="#">회원정보(미구현)</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">미구현</a>
+                    <a class="dropdown-item" href="index.jsp">로그아웃</a>
+                    </div>
                 </li>
             </ul>
 

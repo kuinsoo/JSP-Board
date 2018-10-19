@@ -13,14 +13,76 @@
 
     <title>index.jsp</title>
     <script type="text/javascript">
+        //키업
+		/*		$(document).ready(function () {
+                    $('.valid-feedback').hide();
+                    $('#inputId').on('keyup',function (event) {
+                        if($(this).val() == 'brown') {
+                            $('.valid-feedback').show();
+                        }else {
+                            $('.valid-feedback').hide();
+                        }
+                    });
+                });*/
+
+		//다중 클릭 방지
+	/*	var doubleSubmitFlag = false;
+
+		function doubleSubmitCheck() {
+			if (doubleSubmitFlag) {
+				return doubleSubmitFlag;
+			} else {
+				doubleSubmitFlag = true;
+				return false;
+			}
+		}*/
+  /*      document.onkeydown = fkey;
+        document.onkeypress = fkey;
+        document.onkeyup = fkey;
+
+        var wasPressed = false;
+
+        function fkey(e) {
+        	e = e || window.event;
+        	if (wasPressed) return;
+
+        	if (e.keyCode == 116) {
+        		location.href = "index.jsp"
+            }
+        }*/
+
+
 		$(document).ready(function () {
-			$('.valid-feedback').hide();
-			$('#inputId').on('keyup',function (event) {
-				if($(this).val() == 'brown') {
-					$('.valid-feedback').show();
-				}else {
-					$('.valid-feedback').hide();
+
+			$(document).keydown(function (e) {
+				var keycode = e.keyCode || e.which;
+				if (keycode == 116) {
+					console.log(keycode)
+					$('#feedback').hide();
+					location.href = "index.jsp"
 				}
+			});
+
+			var result = $('#resultText').val();
+			$('#resultText').hide();
+			$('#feedback').hide();
+
+            if (result == "fail"){
+	            $('#feedback').show();
+            } else {
+	            $('#feedback').hide();
+            }
+
+			$('#loginBnt').on('click', function () {
+			/*	if (doubleSubmitCheck()) return;*/
+				$('#fmId').submit();
+			});
+
+			$('#inputPass').keypress (function (event) {
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+				if (keycode == '13'){
+					$('#fmId').submit();
+                }
 			});
 		});
     </script>
@@ -40,13 +102,18 @@
             height: 233px;
 
         }
+        #resultText{
+            background: #272B30;
+            border: none;
+        }
     </style>
 
 </head>
 <body>
-<%-- container --%>
-<div class="container" id="">
 
+<%-- container --%>
+
+<div class="container" id="">
     <div id="map"></div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=971da7f79342d27b553f4e0ffd01e3c5"> </script>
     <script>
@@ -109,35 +176,37 @@
 		}
     </script>
 
-    <%-- ID 입력 비교 성공시 --%>
-    <div class="form-group loginDivs">
-        <label class="form-control-label" for="inputId">아이디 입력</label>
-        <input type="text" class="form-control is-valid" id="inputId" name="memId" placeholder="ID">
-        <div class="valid-feedback">일치하는 아이디 입니다.</div>
-    </div>
+    <form id="fmId" name="fm" action="/login" method="post">
+        <%-- ID 입력 비교 성공시 --%>
+        <div class="form-group loginDivs">
+            <label class="form-control-label" for="inputId">아이디 입력</label>
+            <input type="text" class="form-control is-valid" id="inputId" name="memId" placeholder="ID">
+        </div>
 
-    <%--
-    비교 실패시
-    <div class="form-group has-danger">
-        <label class="form-control-label" for="inputDanger1">Invalid input</label>
-        <input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">
-        <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
-    </div>
-    --%>
-
-
-    <%-- Password 입력란 --%>
-    <div class="form-group loginDivs">
-        <label for="inputPass">Password</label>
-        <input type="password" class="form-control" id="inputPass" name="memPass" placeholder="Password">
-    </div>
-
-    <%-- 로그인 버튼 --%>
-    <div class="form-group loginDivs" >
-        <button type="button" class="btn btn-outline-info" href="/login">로그인</button>
+        <%--
+        비교 실패시
+        <div class="form-group has-danger">
+            <label class="form-control-label" for="inputDanger1">Invalid input</label>
+            <input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">
+            <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
+        </div>
+        --%>
 
 
-    </div><%-- container end --%>
+        <%-- Password 입력란 --%>
+        <div class="form-group loginDivs">
+            <label for="inputPass">Password</label>
+            <input type="password" class="form-control" id="inputPass" name="memPass" placeholder="Password">
+        </div>
+
+        <%-- 로그인 버튼 --%>
+        <div class="form-group loginDivs" >
+            <div id="feedback" class="invalid-feedback">일치하지 않습니다.</div>
+            <button id="loginBnt" type="button" class="btn btn-outline-info" >로그인</button>
+        </div>
+    </form>
+    <input type="text" id="resultText"  value="<%=request.getParameter("result")%>" />
+</div><%-- container end --%>
 </body>
 
 </html>

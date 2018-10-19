@@ -16,7 +16,7 @@ import java.util.List;
  * @Version :
  */
 public class MemberService implements MemberServiceInf {
-	static MemberService memberService;
+	public static MemberService memberService;
 	// Singleton 적용
 	public static MemberService getInstance() {
 		if( memberService == null ) {

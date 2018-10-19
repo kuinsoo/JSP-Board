@@ -45,10 +45,10 @@ public class MemberServiceTest {
 	@Test
 	public void selectMemberTest() {
 		/*** Given ***/
-		String mem_id = "brown";
+		String mem_id = "sally";
 		/*** When ***/
 		MemberVo memVo = service.selectMember(mem_id);
 		/*** Then ***/
-		Assert.assertEquals("브라운", memVo.getMem_name());
+		Assert.assertEquals("셀리", memVo.getMem_name());
 	}
 }

@@ -50,7 +50,9 @@ public class MemberDao implements MemberDaoInf {
 	@Override
 	public MemberVo selectMember(String mem_id) {
 		SqlSession session = factory.openSession();
+		System.out.println("member: " + mem_id);
 		MemberVo memberVo = session.selectOne("member.selectMember", mem_id);
+		System.out.println("memvo:" + memberVo);
 		//오픈한 세션을 닫아 준다.
 		session.close();
 		return memberVo;

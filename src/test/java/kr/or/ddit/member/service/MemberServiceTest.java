@@ -49,6 +49,6 @@ public class MemberServiceTest {
 		/*** When ***/
 		MemberVo memVo = service.selectMember(mem_id);
 		/*** Then ***/
-		Assert.assertEquals(memVo.getMem_name(), "브라운");
+		Assert.assertEquals("브라운", memVo.getMem_name());
 	}
 }

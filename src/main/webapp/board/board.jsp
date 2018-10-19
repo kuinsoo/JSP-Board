@@ -18,11 +18,8 @@
 <%-- container --%>
 <div class="container" id="">
 <%@include file="/board/boardTabel.jsp"%>
-
 </div><%-- container --%>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
 </body>
-<%-- footer --%>
-<%@include file="/footer.jsp"%>
+
 </html>

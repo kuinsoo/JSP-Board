@@ -34,12 +34,12 @@ public class LoginServlet extends HttpServlet {
 		String memPass = request.getParameter("memPass");
 		String encryptPass = Sha256.encrypt(memPass);
 		MemberVo memVo = service.selectMember(memId);
-		System.out.println(encryptPass);
+
 		if(memVo != null && memVo.getMem_pass().equals(encryptPass)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("memVo", memVo);
 			// 아이디와 패스워드가 일치하면 메인 페이지로 응답한다.
-			request.getRequestDispatcher("main.jsp").forward(request, response);
+			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		} else {
 			doGet(request,response);
 		}
@@ -50,6 +50,6 @@ public class LoginServlet extends HttpServlet {
 
 
 		// 일치하지 않는 경우 다시 로그인 페이지로 보낸다.
-		response.sendRedirect("index.jsp?result=fail");
+		response.sendRedirect("/index.jsp?result=fail");
 	}
 }

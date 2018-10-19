@@ -9,12 +9,12 @@
 
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container">
-        <a href="../" class="navbar-brand">Bootswatch</a>
+        <a href="/main" class="navbar-brand">Bootswatch</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
+            <%--<ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="themes">
@@ -61,7 +61,7 @@
                         <a class="dropdown-item" href="../4/slate/_bootswatch.scss">_bootswatch.scss</a>
                     </div>
                 </li>
-            </ul>
+            </ul>--%>
 
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item dropdown">
@@ -70,7 +70,7 @@
                     <a class="dropdown-item" href="#">회원정보(미구현)</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">미구현</a>
-                    <a class="dropdown-item" href="index.jsp">로그아웃</a>
+                    <a class="dropdown-item" href="/logout">로그아웃</a>
                     </div>
                 </li>
             </ul>
@@ -78,3 +78,4 @@
         </div>
     </div>
 </div>
+

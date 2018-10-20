@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <style type="text/css">
      #theadeCul{
@@ -70,13 +69,13 @@
         <th scope="col">
             <div class="form-group">
                 <input type="text" class="form-control texts" placeholder="게시판 이름을 적어주세요"
-                       value="${boardVo.bd_name}" >
+                      value="${boardVo.bd_name}" >
             </div>
         </th>
         <th scope="col">
             <div class="form-group">
                 <select class="custom-select texts" >
-                    <c:choose>
+                  <c:choose>
                         <c:when test="${boardVo.bd_use  == 'Y' }" >
                             <option value="Y" class="textSelect">사용</option>
                         </c:when>
@@ -84,7 +83,6 @@
                             <option value="N" class="textSelect">비사용</option>
                         </c:otherwise>
                     </c:choose>
-                </select>
             </div>
         </th>
         <th scope="col">
@@ -94,6 +92,6 @@
             </div>
         </th>
     </tr>
-    </c:forEach>
+  </c:forEach>
     </tbody>
 </table>

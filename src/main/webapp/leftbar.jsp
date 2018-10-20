@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <style type="text/css">
     #leftbar {
         position: absolute;
@@ -29,13 +30,11 @@
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
         </li>
+        <c:forEach items="${boardList}" var="boardVo">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-primary badge-pill">2</span>
+           ${boardVo.getBd_name()}
+            <span class="badge badge-primary badge-pill">0</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            Morbi leo risus
-            <span class="badge badge-primary badge-pill">1</span>
-        </li>
+        </c:forEach>
     </ul>
 </div>

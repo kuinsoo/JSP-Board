@@ -38,6 +38,8 @@ public class LoginServlet extends HttpServlet {
 
 		if(memVo != null && memVo.getMem_pass().equalsIgnoreCase(encryptPass)) {
 			HttpSession session = request.getSession();
+			/* 세션이 유지되는 시간 설정
+			* 	!설정되지 않으면 세션값을 받아 올때 null 현상이 나타난다 */
 			session.setMaxInactiveInterval(1800);
 			session.setAttribute("memVo", memVo);
 			// 아이디와 패스워드가 일치하면 메인 페이지로 응답한다.

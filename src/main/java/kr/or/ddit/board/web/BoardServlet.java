@@ -51,7 +51,8 @@ public class BoardServlet extends HttpServlet {
 
 	private void locationMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		request.getSession();
+		List<BoardVo> boardList = boardService.selectAllBoard();
+		request.setAttribute("boardList", boardList);
 		request.getRequestDispatcher("/main.jsp").forward(request,response);
 	}
 

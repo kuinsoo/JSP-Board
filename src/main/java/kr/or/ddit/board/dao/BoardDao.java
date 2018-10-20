@@ -66,4 +66,18 @@ public class BoardDao implements BoardDaoInf {
 		session.close();
 		return resultCnt;
 	}
+
+	/**
+	 * 게시판 삭제 ( Create Board 후 삭제 작업을 위해 만들어진 메서드 )
+	 * @param boardId
+	 * @return
+	 */
+	@Override
+	public int deleteBoard(String boardId) {
+		SqlSession session = factory.openSession();
+		int resultCnt = session.delete("board.deleteBoard",boardId);
+		session.commit();
+		session.close();
+		return resultCnt;
+	}
 }

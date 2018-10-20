@@ -28,6 +28,8 @@ public class LoginServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;  charset=UTF-8");
+
 		MemberServiceInf service = MemberService.getInstance();
 
 		String memId = request.getParameter("memId");
@@ -39,7 +41,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("memVo", memVo);
 			// 아이디와 패스워드가 일치하면 메인 페이지로 응답한다.
-			request.getRequestDispatcher("/main.jsp").forward(request, response);
+			response.sendRedirect("/main");
 		} else {
 			doGet(request,response);
 		}
@@ -47,9 +49,9 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		response.setContentType("text/html;  charset=UTF-8");
 
 		// 일치하지 않는 경우 다시 로그인 페이지로 보낸다.
-		response.sendRedirect("/index.jsp?result=fail");
+		response.sendRedirect("/?result=fail");
 	}
 }

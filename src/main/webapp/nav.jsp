@@ -1,11 +1,11 @@
-<%--
+<%@ page import="kr.or.ddit.member.model.MemberVo" %><%--
   Created by IntelliJ IDEA.
   User: Mr.KKu
   Date: 2018-10-15
   Time: 오후 9:14
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"  %>
 
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container">
@@ -65,7 +65,8 @@
 
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://wrapbootstrap.com/?ref=bsw" target="_blank">회원정보</a>
+                    <% MemberVo memVo = (MemberVo)session.getAttribute("memVo");%>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://wrapbootstrap.com/?ref=bsw" target="_blank">${sessionScope.memVo.getMem_name()}회원정보</a>
                     <div class="dropdown-menu" aria-labelledby="download">
                     <a class="dropdown-item" href="#">회원정보(미구현)</a>
                     <div class="dropdown-divider"></div>

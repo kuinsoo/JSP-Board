@@ -13,19 +13,26 @@
         <result property="bd_rdate" column="rdate"/>
     </resultMap>
 
+    <!-- 게시판 전체 검색 -->
     <select id="selectAllBoard" resultMap="boardResult" >
         select * from BOARD order by no asc
     </select>
 
-
+    <!-- 게시판 생성 -->
     <insert id="createBoard" parameterType="boardVo">
         insert into BOARD values
         ('BD' || seqBoard.nextval, #{bd_name}, #{bd_use}, #{bd_creator}, to_char(sysdate,'yyyy-MM-dd'))
     </insert>
 
+    <!-- 게시판 수정 -->
     <update id="editBoard" parameterType="boardVo">
         update BOARD
         set NAME=#{bd_name}, USE=#{bd_use}, CREATOR=#{bd_creator}
         where NO = #{bd_no}
     </update>
+
+    <!-- 게시판 삭제 ( 게시판 생성 Test 작업후  필요로 만들어진 상태 )-->
+    <delete id="deleteBoard" parameterType="String">
+        delete from BOARD where NAME = #{bd_name}
+    </delete>
 </mapper>

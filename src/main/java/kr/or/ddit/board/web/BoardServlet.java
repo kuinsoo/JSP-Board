@@ -30,13 +30,11 @@ import java.util.List;
 @WebServlet(urlPatterns = {"/main", "/boardList" , "/boardInsert", "/boardUpdate"})
 public class BoardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		response.setContentType("text/html;  charset=UTF-8");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.setContentType("text/html;  charset=UTF-8");
-
 		String uri = request.getRequestURI();
 
 		if (uri.equals("/main")) {
@@ -49,11 +47,14 @@ public class BoardServlet extends HttpServlet {
 	}
 
 	private void locationMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;  charset=UTF-8");
+		request.getSession();
 		request.getRequestDispatcher("/main.jsp").forward(request,response);
 	}
 
 	private void locationBoardList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		response.setContentType("text/html;  charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		BoardServiceInf boardService = BoardService.getInstance();
 		List<BoardVo> boardList = boardService.selectAllBoard();
 		request.setAttribute("boardList", boardList);

@@ -59,7 +59,7 @@
 				if (keycode == 116) {
 					console.log(keycode)
 					$('#feedback').hide();
-					location.href = "index.jsp"
+					location.href = "/"
 				}
 			});
 
@@ -180,7 +180,7 @@
         <%-- ID 입력 비교 성공시 --%>
         <div class="form-group loginDivs">
             <label class="form-control-label" for="inputId">아이디 입력</label>
-            <input type="text" class="form-control is-valid" id="inputId" name="memId" placeholder="ID">
+            <input type="text" class="form-control is-valid" id="inputId" name="memId" placeholder="ID" autofocus>
         </div>
 
         <%--

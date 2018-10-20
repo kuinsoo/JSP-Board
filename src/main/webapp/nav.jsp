@@ -66,7 +66,7 @@
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <% MemberVo memVo = (MemberVo)session.getAttribute("memVo");%>
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://wrapbootstrap.com/?ref=bsw" target="_blank">${sessionScope.memVo.getMem_name()}회원정보</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="https://wrapbootstrap.com/?ref=bsw" target="_blank"  >${sessionScope.memVo.getMem_name()}<br/>회원정보</a>
                     <div class="dropdown-menu" aria-labelledby="download">
                     <a class="dropdown-item" href="#">회원정보(미구현)</a>
                     <div class="dropdown-divider"></div>

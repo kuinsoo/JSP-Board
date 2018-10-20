@@ -51,7 +51,11 @@ public class BoardDaoTest {
 
 	@Test
 	public void editBoard() {
+		/*** Given ***/
 
+		/*** When ***/
+
+		/*** Then ***/
 	}
 
 	@Test

@@ -32,18 +32,19 @@
 
 <script type="application/javascript">
     function createBoard() {
-	    var bd_name = document.getElementById("bd_name");
-	    var bd_use = document.getElementById("bd_use");
+	    var bd_name = document.getElementById("bd_name").value;
+	    var bd_use = document.getElementById("bd_use").value;
 	    location.href = "/boardInsert?bd_name="+bd_name+"&bd_use="+bd_use;
+
     }
 </script>
 <table class="table table-hover">
     <thead>
     <tr>
-        <th scope="col" id="bd_name"><div id="theadeCul" >게시판 이름</div></th>
+        <th scope="col" ><div id="theadeCul" >게시판 이름</div></th>
         <th scope="col">
             <div class="form-group">
-                <input type="text" class="form-control texts" placeholder="게시판 이름을 적어주세요" >
+                <input type="text" class="form-control texts" id="bd_name" placeholder="게시판 이름을 적어주세요" value="">
             </div>
         </th>
         <th scope="col">

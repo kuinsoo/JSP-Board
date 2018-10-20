@@ -36,6 +36,11 @@ public class BoardService implements  BoardServiceInf{
 		return dao.selectAllBoard();
 	}
 
+	@Override
+	public BoardVo selectBoard(String boardId) {
+		return dao.selectBoard(boardId);
+	}
+
 	/**
 	 * 게시판 생성
 	 * @param boardVo

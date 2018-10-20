@@ -23,6 +23,12 @@ public interface BoardDaoInf {
 	List<BoardVo> selectAllBoard();
 
 	/**
+	 * 게시판 조회
+	 * @return
+	 */
+	BoardVo selectBoard(String boardId);
+
+	/**
 	 * 게시판 생성
 	 * @param boardVo
 	 * @return

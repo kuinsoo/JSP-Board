@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style type="text/css">
-     #theadeCul{
+    #theadeCul{
         line-height: 5;
         font-size: 18px;
         text-align: center;
@@ -31,12 +31,23 @@
 </style>
 
 <script type="application/javascript">
-    function createBoard() {
-	    var bd_name = document.getElementById("bd_name").value;
-	    var bd_use = document.getElementById("bd_use").value;
-	    location.href = "/boardInsert?bd_name="+bd_name+"&bd_use="+bd_use;
+	$(document).ready(function () {
+        $('.bdNos').hide();
+	});
 
-    }
+	function createBoard() {
+		var bd_name = document.getElementById("bd_name").value;
+		var bd_use = document.getElementById("bd_use").value;
+		location.href = "/boardInsert?bd_name="+bd_name+"&bd_use="+bd_use;
+	}
+
+	function editBoard(num) {
+		var bdName = document.getElementById("bdName"+num).value;
+		var stUse = document.getElementById("stUse"+num).value;
+		var bdNo = document.getElementById("bdNo"+num).value;
+		location.href = "/boardEdit?bdNo="+bdNo+"&bdName="+bdName+"&stUse="+stUse;
+	}
+
 </script>
 <table class="table table-hover">
     <thead>
@@ -65,37 +76,38 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${boardList}" var="boardVo" >
-    <tr>
-        <th scope="col"><div id="tbodyCul" >게시판 이름</div></th>
-        <th scope="col">
-            <div class="form-group">
-                <input type="text" class="form-control texts" placeholder="게시판 이름을 적어주세요"
-                      value="${boardVo.bd_name}" >
-            </div>
-        </th>
-        <th scope="col">
-            <div class="form-group">
-                <select class="custom-select texts"  >
-                  <c:choose>
+    <c:forEach items="${boardList}" var="boardVo" varStatus="i">
+        <tr>
+            <th scope="col"><div id="tbodyCul" >게시판 이름</div></th>
+            <th scope="col">
+                <div class="form-group">
+                    <input type="text" id="bdName${i.index}" class="form-control texts" placeholder="게시판 이름을 적어주세요"
+                           value="${boardVo.bd_name}" >
+                </div>
+            </th>
+            <th scope="col">
+                <div class="form-group">
+                    <select class="custom-select texts" id="stUse${i.index}" >
+                        <c:choose>
                         <c:when test="${boardVo.bd_use  == 'Y' }" >
-                            <option value="Y" class="textSelect">사용</option>
-                            <option value="N" class="textSelect">비사용</option>
+                        <option value="Y" class="textSelect">사용</option>
+                        <option value="N" class="textSelect">비사용</option>
                         </c:when>
                         <c:otherwise>
-                            <option value="N" class="textSelect">비사용</option>
-                            <option value="Y" class="textSelect">사용</option>
+                        <option value="N" class="textSelect">비사용</option>
+                        <option value="Y" class="textSelect">사용</option>
                         </c:otherwise>
-                    </c:choose>
-            </div>
-        </th>
-        <th scope="col">
-            <div class="form-group">
-                <button type="button"   class="btn btn-outline-info boardBtn">수정</button>
-                <button type="button"   class="btn btn-outline-danger boardBtn">취소</button>
-            </div>
-        </th>
-    </tr>
-  </c:forEach>
+                        </c:choose>
+                </div>
+            </th>
+            <th scope="col">
+                <div class="form-group">
+                    <input type="text" id="bdNo${i.index}" class="bdNos" value="${boardVo.bd_no}" />
+                    <button type="button"   class="btn btn-outline-info boardBtn" onclick="editBoard(${i.index})">수정</button>
+                    <button type="button"   class="btn btn-outline-danger boardBtn">취소</button>
+                </div>
+            </th>
+        </tr>
+    </c:forEach>
     </tbody>
 </table>

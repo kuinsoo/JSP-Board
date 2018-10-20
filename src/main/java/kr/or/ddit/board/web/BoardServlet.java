@@ -28,7 +28,7 @@ import java.util.List;
  * @Date : 2018-10-19 / 오후 3:46
  * @Version :
  */
-@WebServlet(urlPatterns = {"/main", "/boardList" , "/boardInsert", "/boardUpdate"})
+@WebServlet(urlPatterns = {"/main", "/boardList" , "/boardInsert", "/boardEdit" })
 public class BoardServlet extends HttpServlet {
 	private BoardServiceInf boardService = BoardService.getInstance();
 
@@ -46,6 +46,8 @@ public class BoardServlet extends HttpServlet {
 			locationBoardList(request, response);
 		} else if (uri.equals("/boardInsert")) {
 			locationBoardInsert(request,response);
+		} else if (uri.equals("/boardEdit")) {
+			locationBoardEdit(request,response);
 		}
 	}
 
@@ -63,6 +65,13 @@ public class BoardServlet extends HttpServlet {
 		request.getRequestDispatcher("/board/board.jsp").forward(request,response);
 	}
 
+	/**
+	 * 게시판 생성
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void locationBoardInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		String bd_name 	= request.getParameter("bd_name");
@@ -72,9 +81,30 @@ public class BoardServlet extends HttpServlet {
 		boardVo.setBd_use(bd_use);
 		HttpSession session =  request.getSession();
 		MemberVo memVo = (MemberVo)session.getAttribute("memVo");
-		System.out.println(memVo);
 		boardVo.setBd_creator(memVo.getMem_id());
 		int resultCnt = boardService.createBoard(boardVo);
-		request.getRequestDispatcher("/main").forward(request,response);
+		response.sendRedirect("/main");
+	}
+
+	/**
+	 * 게시판 이름 / 사용여부 수정
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void locationBoardEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		String bdNo		= request.getParameter("bdNo");
+		String bdName 	= request.getParameter("bdName");
+		String stUse 	= request.getParameter("stUse");
+		BoardVo boardVo = boardService.selectBoard(bdNo);
+		boardVo.setBd_name(bdName);
+		boardVo.setBd_use(stUse);
+		HttpSession session =  request.getSession();
+		MemberVo memVo = (MemberVo)session.getAttribute("memVo");
+		boardVo.setBd_creator(memVo.getMem_id());
+		int resultCnt = boardService.editBoard(boardVo);
+		response.sendRedirect("/main");
 	}
 }

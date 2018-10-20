@@ -31,10 +31,14 @@
         <li class="list-group-item d-flex justify-content-between align-items-center">
         </li>
         <c:forEach items="${boardList}" var="boardVo">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="#">${boardVo.getBd_name()}</a>
-            <span class="badge badge-primary badge-pill">0</span>
-        </li>
+            <c:choose>
+                <c:when test="${boardVo.getBd_use() == 'Y'}">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="#">${boardVo.getBd_name()}</a>
+                        <span class="badge badge-primary badge-pill">0</span>
+                    </li>
+                </c:when>
+            </c:choose>
         </c:forEach>
     </ul>
 </div>

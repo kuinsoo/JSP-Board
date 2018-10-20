@@ -15,7 +15,12 @@
 
     <!-- 게시판 전체 검색 -->
     <select id="selectAllBoard" resultMap="boardResult" >
-        select * from BOARD order by no asc
+        select board.* from board order by no
+    </select>
+
+    <!-- 게시판 검색 -->
+    <select id="selectBoard" parameterType="String" resultMap="boardResult">
+        select * from BOARD where NO = #{bd_no}
     </select>
 
     <!-- 게시판 생성 -->
@@ -27,7 +32,7 @@
     <!-- 게시판 수정 -->
     <update id="editBoard" parameterType="boardVo">
         update BOARD
-        set NAME=#{bd_name}, USE=#{bd_use}, CREATOR=#{bd_creator}
+        set NAME = #{bd_name}, USE = #{bd_use}
         where NO = #{bd_no}
     </update>
 

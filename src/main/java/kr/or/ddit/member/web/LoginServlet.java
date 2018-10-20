@@ -52,8 +52,8 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;  charset=UTF-8");
-
+		request.setAttribute("result", "fail");
 		// 일치하지 않는 경우 다시 로그인 페이지로 보낸다.
-		response.sendRedirect("/?result=fail");
+		request.getRequestDispatcher("index.jsp").forward(request,response);
 	}
 }

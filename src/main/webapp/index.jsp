@@ -59,7 +59,7 @@
 				if (keycode == 116) {
 					console.log(keycode)
 					$('#feedback').hide();
-					location.href = "/"
+					location.href = "/kkuisland"
 				}
 			});
 
@@ -205,7 +205,7 @@
             <button id="loginBnt" type="button" class="btn btn-outline-info" >로그인</button>
         </div>
     </form>
-    <input type="text" id="resultText"  value="<%=request.getParameter("result")%>" />
+    <input type="text" id="resultText"  value="<%=request.getAttribute("result")%>" />
 </div><%-- container end --%>
 </body>
 

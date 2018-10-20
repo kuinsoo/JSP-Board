@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class BoardDaoTest {
 	}
 
 	@Test
-	public void createBoard() {
+	public void createBoardTest() {
 		/*** Given ***/
 
 		/*** When ***/
@@ -49,17 +50,30 @@ public class BoardDaoTest {
 
 	}
 
+	/**
+	 * 게시판 수정 테스트
+	 */
 	@Test
-	public void editBoard() {
+	public void editBoardTest() {
 		/*** Given ***/
 
 		/*** When ***/
-
+		BoardVo boardVo = new BoardVo();
+		boardVo.setBd_no("BD8");
+		boardVo.setBd_name("자유게시판1");
+		boardVo.setBd_use("Y");
+		boardVo.setBd_creator("1");
+		boardVo.setBd_rdate(new Date());
+		int resultCnt = dao.editBoard(boardVo);
 		/*** Then ***/
+		Assert.assertEquals(1, resultCnt);
 	}
 
+	/**
+	 * 게시판 삭제
+	 */
 	@Test
-	public void deleteBoard() {
+	public void deleteBoardTest() {
 		/*** Given ***/
 
 		/*** When ***/
@@ -69,5 +83,14 @@ public class BoardDaoTest {
 		Assert.assertEquals(1, resultCnt);
 	}
 
+	@Test
+	public void selectBoardTest() {
+		/*** Given ***/
 
+		/*** When ***/
+		String bdNo = "BD8";
+		BoardVo boardVo = dao.selectBoard(bdNo);
+		/*** Then ***/
+		Assert.assertEquals("자유게시판1", boardVo.getBd_name());
+	}
 }

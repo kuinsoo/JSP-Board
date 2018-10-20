@@ -11,22 +11,20 @@ import java.io.IOException;
 /**
  * ${PACKAGE_NAME}
  * ${FILE_NAME}
- * Desc :
+ * Desc : Main Servlet
  *
- * @Author : Mr.KKu
- * @Date : 2018-10-19 / 오후 3:33
+ * @Author : "Mr.KKu"
+ * @Date : 2018-10-20 / 오후 9:23
  * @Version :
  */
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/kkuisland")
+public class MainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.invalidate();
-		/*response.sendRedirect("/index.jsp");*/
-		request.getRequestDispatcher("index.jsp").forward(request,response);
+		request.getRequestDispatcher("/index.jsp").forward(request,response);
+
 	}
 }

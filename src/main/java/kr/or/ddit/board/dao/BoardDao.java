@@ -40,6 +40,19 @@ public class BoardDao implements BoardDaoInf {
 	}
 
 	/**
+	 * 게시판 한개 조회
+	 * @param boardId
+	 * @return
+	 */
+	@Override
+	public BoardVo selectBoard(String boardId) {
+		SqlSession session = factory.openSession();
+		BoardVo boardVo = session.selectOne("board.selectBoard",boardId);
+		session.close();
+		return boardVo;
+	}
+
+	/**
 	 * 게시판 생성
 	 * @param boardVo
 	 * @return

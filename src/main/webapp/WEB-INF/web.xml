@@ -5,8 +5,54 @@
          version="4.0">
     
         <welcome-file-list>
-            <welcome-file>/index.jsp</welcome-file>
+            <welcome-file>/kkuisland</welcome-file>
         </welcome-file-list>
 
+
+    <!-- JSP 접속 방지 -->
+    <security-constraint>
+
+        <display-name>JSP Protection</display-name>
+
+        <web-resource-collection>
+
+            <web-resource-name>SecureJSPPages</web-resource-name>
+
+            <url-pattern>*.jsp</url-pattern>
+
+        </web-resource-collection>
+
+        <auth-constraint>
+
+            <role-name>nobody</role-name>
+
+        </auth-constraint>
+
+    </security-constraint>
+
+
+
+    <security-role>
+
+        <description>
+
+            Nobody should be in this role so JSP files are protected
+
+            from direct access.
+
+        </description>
+
+        <role-name>nobody</role-name>
+
+    </security-role>
+
+    <!-- 401 에러 로그인 페이지로 보내기 -->
+    <error-page>
+
+        <error-code>401</error-code>
+
+        <location>/kkuisland</location>
+
+    </error-page>
 </web-app>
 

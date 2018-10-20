@@ -14,6 +14,9 @@ import org.junit.Test;
  */
 public class Sha256Test {
 
+	/**
+	 * 암호화 테스트
+	 */
 	@Test
 	public void encryptTest() {
 		String encrypt = Sha256.encrypt("1");

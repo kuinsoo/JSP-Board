@@ -25,6 +25,9 @@ public class BoardDaoTest {
 		dao = new BoardDao();
 	}
 
+	/**
+	 * 게시판 전체 검색
+	 */
 	@Test
 	public void selectAllBoardTest() {
 
@@ -33,6 +36,9 @@ public class BoardDaoTest {
 		Assert.assertEquals(1,boardList.size());
 	}
 
+	/**
+	 * 게시판 생성
+	 */
 	@Test
 	public void createBoardTest() {
 		/*** Given ***/
@@ -45,8 +51,9 @@ public class BoardDaoTest {
 
 		int resultCnt = dao.createBoard(boardVo);
 		/*** Then ***/
-		Assert.assertEquals(1, resultCnt);
+		Assert.assertEquals(2, resultCnt);
 
+		deleteBoardTest();
 
 	}
 
@@ -83,6 +90,9 @@ public class BoardDaoTest {
 		Assert.assertEquals(1, resultCnt);
 	}
 
+	/**
+	 * 게시판 검색
+	 */
 	@Test
 	public void selectBoardTest() {
 		/*** Given ***/

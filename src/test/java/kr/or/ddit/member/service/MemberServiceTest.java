@@ -32,6 +32,9 @@ public class MemberServiceTest {
 
 	}
 
+	/**
+	 * 회원 전체 선택
+	 */
 	@Test
 	public void selectAllMemberTest() {
 		/*** Given ***/
@@ -42,6 +45,9 @@ public class MemberServiceTest {
 		Assert.assertEquals(105, memberList.size());
 	}
 
+	/**
+	 * 회원 검색
+	 */
 	@Test
 	public void selectMemberTest() {
 		/*** Given ***/

@@ -34,6 +34,9 @@ public class MemberDaoTest {
 
 	}
 
+	/**
+	 * 회원정보 전체 검색
+	 */
 	@Test
 	public void selectAllMemberTest() {
 		/*** Given ***/
@@ -44,6 +47,9 @@ public class MemberDaoTest {
 		Assert.assertEquals(105, memberList.size());
 	}
 
+	/**
+	 * 회원 검색
+	 */
 	@Test
 	public void selectMemberTest() {
 		/*** Given ***/

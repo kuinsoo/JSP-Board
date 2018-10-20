@@ -26,13 +26,13 @@
     <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <a id="createBoard" href="/boardList">게시판 생성</a>
-            <span class="badge badge-primary badge-pill">0</span>
+            <span class="badge badge-primary badge-pill">${boardList.size()}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
         </li>
         <c:forEach items="${boardList}" var="boardVo">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-           ${boardVo.getBd_name()}
+            <a href="#">${boardVo.getBd_name()}</a>
             <span class="badge badge-primary badge-pill">0</span>
         </li>
         </c:forEach>

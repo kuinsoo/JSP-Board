@@ -108,4 +108,18 @@ public class PostDoaTest {
 		Assert.assertEquals(1, resultCnt);
 	}
 
+	/**
+	 * 게시판 안에 전체 게시글  검색
+	 */
+	@Test
+	public void selectBoardInPostTest() {
+		/*** Given ***/
+
+		/*** When ***/
+		String bdNo = "BD8";
+		List<PostVo> postList = postDao.selectBoardInPost(bdNo);
+		/*** Then ***/
+		Assert.assertEquals(15, postList.size());
+	}
+
 }

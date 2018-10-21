@@ -107,4 +107,6 @@ public class BoardServlet extends HttpServlet {
 		int resultCnt = boardService.editBoard(boardVo);
 		response.sendRedirect("/main");
 	}
+
+
 }

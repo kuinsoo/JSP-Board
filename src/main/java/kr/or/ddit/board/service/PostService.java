@@ -49,4 +49,9 @@ public class PostService implements PostServiceInf {
 	public int deletePost(String post_no) {
 		return dao.deletePost(post_no);
 	}
+
+	@Override
+	public List<PostVo> selectBoardInPost(String board_no) {
+		return dao.selectBoardInPost(board_no);
+	}
 }

@@ -28,6 +28,12 @@ public interface PostDaoInf {
 	List<PostVo> selectAllPost();
 
 	/**
+	 * 게시판 안에 전체 게시글 검색
+	 * @return
+	 */
+	List<PostVo> selectBoardInPost(String board_no);
+
+	/**
 	 * 게시글 생성
 	 * @param postVo
 	 * @return

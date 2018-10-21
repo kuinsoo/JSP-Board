@@ -56,6 +56,18 @@ public class PostDao implements PostDaoInf{
 	}
 
 	/**
+	 * 게시판 안 전체 게시글 검색
+	 * @return
+	 */
+	@Override
+	public List<PostVo> selectBoardInPost(String post_no) {
+		SqlSession session = factory.openSession();
+		List<PostVo> postList = session.selectList("post.selectAllPost",post_no);
+		session.close();
+		return  postList;
+	}
+
+	/**
 	 * 게시글 생성
 	 * @param postVo
 	 * @return

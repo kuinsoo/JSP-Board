@@ -6,7 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * kr.or.ddit.board.dao
@@ -17,7 +19,7 @@ import java.util.List;
  * @Date : 2018-10-21 / 오후 12:18
  * @Version :
  */
-public class PostDoaTest {
+public class PostDaoTest {
 
 	private PostDaoInf postDao;
 
@@ -116,8 +118,12 @@ public class PostDoaTest {
 		/*** Given ***/
 
 		/*** When ***/
-		String bdNo = "BD8";
-		List<PostVo> postList = postDao.selectBoardInPost(bdNo);
+		Map<String, String> postMap = new HashMap<>();
+		postMap.put("post_groupno", "BD1");
+		postMap.put("page", "1");
+		postMap.put("pageSize", "11");
+
+		List<PostVo> postList = postDao.selectBoardInPost(postMap);
 		/*** Then ***/
 		Assert.assertEquals(15, postList.size());
 	}

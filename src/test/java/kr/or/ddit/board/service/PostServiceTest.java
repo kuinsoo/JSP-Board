@@ -8,7 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * kr.or.ddit.board.service
@@ -109,18 +111,21 @@ public class PostServiceTest {
 		/*** Then ***/
 		Assert.assertEquals(1, resultCnt);
 	}
-	/**
-	 * 게시판 안에 전체 게시글  검색
-	 */
+
 	@Test
 	public void selectBoardInPostTest() {
 		/*** Given ***/
 
 		/*** When ***/
-		String bdNo = "BD8";
-		List<PostVo> postList = postService.selectBoardInPost(bdNo);
+		Map<String, String> postMap = new HashMap<>();
+		postMap.put("post_groupno", "BD1");
+		postMap.put("page", "1");
+		postMap.put("pageSize", "10");
+
+		List<PostVo> postList = postService.selectBoardInPost(postMap);
 		/*** Then ***/
 		Assert.assertEquals(15, postList.size());
 	}
+
 
 }

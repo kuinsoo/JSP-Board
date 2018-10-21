@@ -4,6 +4,7 @@ import kr.or.ddit.board.model.PostVo;
 import oracle.jdbc.proxy.annotation.Post;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * kr.or.ddit.board.service
@@ -32,7 +33,7 @@ public interface PostServiceInf {
 	 * 게시판 안에 전체 게시글 검색
 	 * @return
 	 */
-	List<PostVo> selectBoardInPost(String board_no);
+	List<PostVo> selectBoardInPost(Map<String,String> postMap);
 
 	/**
 	 * 게시글 생성

@@ -22,8 +22,17 @@ public class PostVo {
 	private String post_recursion;
 	private String post_groupno;
 	private String post_sub;
+	private int post_rnum;
 
 	public PostVo() {
+	}
+
+	public int getPost_rnum() {
+		return post_rnum;
+	}
+
+	public void setPost_rnum(int post_rnum) {
+		this.post_rnum = post_rnum;
 	}
 
 	public String getPost_sub() {

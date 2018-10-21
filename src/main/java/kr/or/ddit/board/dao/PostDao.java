@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * kr.or.ddit.board.dao
@@ -60,9 +61,9 @@ public class PostDao implements PostDaoInf{
 	 * @return
 	 */
 	@Override
-	public List<PostVo> selectBoardInPost(String post_no) {
+	public List<PostVo> selectBoardInPost(Map<String,String> postMap) {
 		SqlSession session = factory.openSession();
-		List<PostVo> postList = session.selectList("post.selectAllPost",post_no);
+		List<PostVo> postList = session.selectList("post.selectBoardInPost",postMap);
 		session.close();
 		return  postList;
 	}

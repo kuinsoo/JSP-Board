@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <style type="text/css">
     thead>tr:first-child>th {
         text-align: center;
@@ -55,9 +56,13 @@
         font-size: 0.9375rem;
     }
 
-
-
+    /* 페이지 바 */
+    #pageBar {
+        display: table;
+        margin: 0 auto
+    }
 </style>
+
 <table class="table table-hover">
     <thead>
     <tr>
@@ -70,18 +75,59 @@
 
 
     <tbody>
+    <c:forEach items="${postList}" var="postVo">
     <tr class="table-primary tbodyTr">
-        <th scope="row">1111159</th>
-        <td>구인수는열심히공부를합니다구인수는열심히공부를합니다삼십이합니다삼십이합니다삼십이합니다삼십이합니다삼십이합니다삼십이다</td>
-        <td>구인수r와우</td>
-        <td>2018-08-08</td>
+        <th scope="row">${postVo.getPost_rnum()}</th>
+        <td>${postVo.getPost_title()}</td>
+        <td>${postVo.getPost_writer()}</td>
+        <td><fmt:formatDate value="${postVo.getPost_rdate()}" /></td>
     </tr>
-    <tr class="table-secondary tbodyTr">
-        <th scope="row">1111159</th>
-        <td>구인수는열심히공부를합니다구인수는열심히공부를합니다삼십이합니다삼십이합니다삼십이합니다삼십이합니다삼십이합니다삼십이다</td>
-        <td>구인수r와우</td>
-        <td>2018-08-08</td>
+    </c:forEach>
+    <tr class="table-primary tbodyTr">
+        <th scope="row" colspan="4">
+            <div id="pageBar">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">4</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">5</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">6</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">7</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">8</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">9</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">10</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </th>
     </tr>
     </tbody>
+
 
 </table>

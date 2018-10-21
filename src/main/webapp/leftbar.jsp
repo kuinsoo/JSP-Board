@@ -17,11 +17,30 @@
         z-index: 100;
         margin-bottom: -63px;
     }
-
-
+    .bdnames {
+        background: #272B30;
+        border: none;
+    }
+    .bdLink {
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
 </style>
 
+<script>
+    $(document).ready(function () {
+	    $('.bdnames').hide();
+    });
 
+	function postLink(num) {
+        var board_no = document.getElementById("bd_name"+num).value;
+        console.log(board_no);
+        var page = 1;
+        var pageSize = 10;
+        location.href = "/post?no="+board_no+"&page="+page+"&pageSize="+pageSize;
+	}
+</script>
 <div id="leftbar">
     <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -30,13 +49,14 @@
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
         </li>
-        <c:forEach items="${boardList}" var="boardVo">
+        <c:forEach items="${boardList}" var="boardVo" varStatus="i">
             <c:choose>
-                <c:when test="${boardVo.getBd_use() == 'Y'}">
+                <c:when test="${boardVo.bd_use == 'Y'}">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="/postList?no=${boardVo.getBd_no()}">${boardVo.getBd_name()}</a>
+                        <a  class="bdLink" onclick="postLink(${i.index})">${boardVo.bd_name}</a>
                         <span class="badge badge-primary badge-pill">0</span>
                     </li>
+                    <input type="text" id="bd_name${i.index}" class="bdnames" value="${boardVo.bd_no}" />
                 </c:when>
             </c:choose>
         </c:forEach>

@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: "Mr.KKu"
   Date: 2018-10-21
-  Time: 오전 8:34
+  Time: 오후 10:27
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,7 +21,7 @@
 <%@include file="/leftbar.jsp" %>
 <%-- container --%>
 <div class="container" id="">
-    <%@ include file="postList.jsp"%>
+
 </div><%-- container --%>
 
 </body>

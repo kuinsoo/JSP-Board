@@ -24,15 +24,16 @@
 
     <!-- 게시판 안에 전체 게시글 검색 -->
     <select id="selectBoardInPost" resultMap="mapPostVo" parameterType="Map">
-        select ROWNUM rnum,
-               A.*
-        from  (select  lpad('└→',2*(level-1))|| TITLE as subtitle, post.*
-               from POST
-               where BOARDNO = #{post_groupno}
-               start with RECURSION is null
-               connect by prior no = RECURSION
-               order siblings by GROUPNO desc) A
-        where ROWNUM between #{page}*#{pageSize}- (#{pageSize}-1)
+        select * from
+                      (select ROWNUM rnum,
+                              A.*
+                       from  (select  lpad('└→',2*(level-1))|| TITLE as subtitle, post.*
+                              from POST
+                              where BOARDNO = #{post_groupno}
+                              start with RECURSION is null
+                              connect by prior no = RECURSION
+                              order siblings by GROUPNO desc) A)
+        where rnum between #{page}*#{pageSize}- (#{pageSize}-1)
                       and #{page}*#{pageSize}
     </select>
 

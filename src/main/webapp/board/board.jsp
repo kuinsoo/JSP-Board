@@ -14,6 +14,7 @@
 <body>
 <%-- nav --%>
 <%@include file="/nav.jsp"%>
+
 <%-- container --%>
 <div class="container" id="">
 <%@include file="/board/boardTable.jsp"%>

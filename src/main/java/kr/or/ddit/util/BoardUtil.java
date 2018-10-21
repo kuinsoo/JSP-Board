@@ -12,7 +12,7 @@ import java.util.Map;
  * @Date : 2018-10-21 / 오후 6:50
  * @Version :
  */
-public class PageOption {
+public class BoardUtil {
 	private static int page 		= 1;
 	private static int pageSize 	= 10;
 

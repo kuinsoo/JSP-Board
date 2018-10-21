@@ -62,7 +62,11 @@
         margin: 0 auto
     }
 </style>
-
+<script>
+    function createPost() {
+	    location.href= "/postCreate"
+    }
+</script>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -76,55 +80,45 @@
 
     <tbody>
     <c:forEach items="${postList}" var="postVo">
-    <tr class="table-primary tbodyTr">
-        <th scope="row">${postVo.getPost_rnum()}</th>
-        <td>${postVo.getPost_title()}</td>
-        <td>${postVo.getPost_writer()}</td>
-        <td><fmt:formatDate value="${postVo.getPost_rdate()}" /></td>
-    </tr>
+        <tr class="table-primary tbodyTr">
+            <th scope="row">${postVo.getPost_rnum()}</th>
+            <td>${postVo.getPost_title()}</td>
+            <td>${postVo.getPost_writer()}</td>
+            <td><fmt:formatDate value="${postVo.getPost_rdate()}" /></td>
+        </tr>
     </c:forEach>
+
+    <%-- 페이징 처리--%>
     <tr class="table-primary tbodyTr">
-        <th scope="row" colspan="4">
+        <th scope="row" colspan="3">
             <div id="pageBar">
                 <ul class="pagination">
                     <li class="page-item disabled">
                         <a class="page-link" href="#">&laquo;</a>
                     </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">6</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">7</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">8</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">9</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">10</a>
-                    </li>
+                    <%--    <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>--%>
+                    <c:forEach items="${postAllList}" var="postVo" varStatus="i" step="9">
+                        <li class="page-item">
+                            <c:choose>
+                            <c:when test="${i.index+1 eq 1 }">
+                                <a class="page-link" href="/post?no=${postVo.post_boardno}&page=${i.index+1}&pageSize=10">1</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="page-link" href="/post?no=${postVo.post_boardno}&page=${i.index+1-8}&pageSize=10">${i.index+1-8}</a>
+                                    </c:otherwise>
+                                    </c:choose>
+                        </li>
+                    </c:forEach>
                     <li class="page-item">
                         <a class="page-link" href="#">&raquo;</a>
                     </li>
                 </ul>
             </div>
+        </th>
+        <th>
+            <button type="button" class="btn btn-outline-success" onclick="createPost()">글쓰기</button>
         </th>
     </tr>
     </tbody>

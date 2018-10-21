@@ -21,11 +21,11 @@ import java.util.List;
  */
 public class BoardServiceTests {
 
-	private BoardServiceInf service;
+	private BoardServiceInf boardService;
 
 	@Before
 	public void before() {
-		service = new BoardService();
+		boardService = new BoardService();
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class BoardServiceTests {
 	@Test
 	public void selectAllBoardTest() {
 
-		List<BoardVo> boardList = service.selectAllBoard();
+		List<BoardVo> boardList = boardService.selectAllBoard();
 
 		Assert.assertEquals(1,boardList.size());
 	}
@@ -48,13 +48,13 @@ public class BoardServiceTests {
 
 		/*** When ***/
 		BoardVo boardVo = new BoardVo();
-		boardVo.setBd_name("자유게시판");
+		boardVo.setBd_name("자유게시판Service");
 		boardVo.setBd_use("Y");
 		boardVo.setBd_creator("brown");
 
-		int resultCnt = service.createBoard(boardVo);
+		int resultCnt = boardService.createBoard(boardVo);
 		/*** Then ***/
-		Assert.assertEquals(1, resultCnt);
+		Assert.assertEquals(2, resultCnt);
 
 		deleteBoardTest();
 
@@ -70,13 +70,13 @@ public class BoardServiceTests {
 		/*** When ***/
 		BoardVo boardVo = new BoardVo();
 		boardVo.setBd_no("BD8");
-		boardVo.setBd_name("자유게시판1");
+		boardVo.setBd_name("자유게시판Service");
 		boardVo.setBd_use("Y");
 		boardVo.setBd_creator("1");
 		boardVo.setBd_rdate(new Date());
-		int resultCnt = service.editBoard(boardVo);
+		int resultCnt = boardService.editBoard(boardVo);
 		/*** Then ***/
-		Assert.assertEquals(2, resultCnt);
+		Assert.assertEquals(1, resultCnt);
 	}
 
 	/**
@@ -88,7 +88,7 @@ public class BoardServiceTests {
 
 		/*** When ***/
 		String boardName = "자유게시판"; // PK ID 는 시퀀스를 이용해 변하기 때문에 TEST시에는 이름이용
-		int resultCnt = service.deleteBoard(boardName);
+		int resultCnt = boardService.deleteBoard(boardName);
 		/*** Then ***/
 		Assert.assertEquals(1, resultCnt);
 	}
@@ -102,8 +102,8 @@ public class BoardServiceTests {
 
 		/*** When ***/
 		String bdNo = "BD8";
-		BoardVo boardVo = service.selectBoard(bdNo);
+		BoardVo boardVo = boardService.selectBoard(bdNo);
 		/*** Then ***/
-		Assert.assertEquals("자유게시판1", boardVo.getBd_name());
+		Assert.assertEquals("자유게시판service", boardVo.getBd_name());
 	}
 }

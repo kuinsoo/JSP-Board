@@ -26,7 +26,7 @@ import java.util.Map;
  * @Date : 2018-10-21 / 오전 8:40
  * @Version :
  */
-@WebServlet(urlPatterns = {"/postList", "/post", "/postCreate", "/postEdit", "/postDelete"})
+@WebServlet(urlPatterns = {"/postList", "/post", "/postCreate", "/postEdit", "/postDelete", "/postWrite"})
 public class PostServlet extends HttpServlet {
 	private PostServiceInf service = PostService.getInstance();
 	private BoardServiceInf boardService = BoardService.getInstance();
@@ -49,6 +49,8 @@ public class PostServlet extends HttpServlet {
 			locationPostEdit(request, response);
 		} else if (uri.equals("/postDelete")) {
 			locationPostDelete(request, response);
+		} else if (uri.equals("/postWrite")) {
+			locationPostWrite(request,response);
 		}
 	}
 
@@ -70,17 +72,25 @@ public class PostServlet extends HttpServlet {
 		List<PostVo> postAllList = service.selectAllPost();
 		request.setAttribute("postAllList",postAllList);
 		request.setAttribute("boardList", boardService.selectAllBoard());
+		request.setAttribute("boardPage", "postList");
 		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
 
-	private  void locationPostCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private  void locationPostWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("boardList", boardService.selectAllBoard());
-		request.getRequestDispatcher("/board/postCreate.jsp").forward(request,response);
+		request.setAttribute("boardPage", "postCreate");
+		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
 	private void locationPostEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
-	private void  locationPostDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void locationPostDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	}
+	private void locationPostCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PostVo postVo = new PostVo();
+		String title =  request.getParameter("pc_tt");
+		String content =  request.getParameter("pc_ta");
+		postVo.setPost_title(title);
 	}
 }

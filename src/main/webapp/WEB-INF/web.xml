@@ -18,7 +18,7 @@
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
 
-    <!-- JSP 접속 방지 -->
+    <!-- JSP 접속 방지
     <security-constraint>
 
         <display-name>JSP Protection</display-name>
@@ -54,11 +54,20 @@
         <role-name>nobody</role-name>
 
     </security-role>
-
+ -->
     <!-- 401 에러 로그인 페이지로 보내기 -->
     <error-page>
 
         <error-code>401</error-code>
+
+        <location>/kkuisland</location>
+
+    </error-page>
+
+    <!-- 500 에러 로그인 페이지로 보내기 -->
+    <error-page>
+
+        <error-code>500</error-code>
 
         <location>/kkuisland</location>
 

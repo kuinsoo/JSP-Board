@@ -49,7 +49,7 @@
     <!-- 게시글 생성-->
     <insert id="createPost" parameterType="postVo">
         insert into POST values
-                                (#{post_title}, 'PT'||seqPost.nextval, #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion}, #{post_groupno})
+        (#{post_title}, 'PT'||seqPost.nextval, #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion}, #{post_groupno})
     </insert>
 
 

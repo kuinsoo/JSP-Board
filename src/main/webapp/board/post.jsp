@@ -21,7 +21,14 @@
 <%@include file="/leftbar.jsp" %>
 <%-- container --%>
 <div class="container" id="">
-    <%@ include file="postList.jsp"%>
+    <c:choose>
+        <c:when test="${boardPage eq 'postList'}">
+            <%@ include file="/board/postList.jsp"%>
+        </c:when>
+        <c:when test="${boardPage eq 'postCreate'}">
+            <%@ include file="/board/postCreate.jsp" %>
+        </c:when>
+    </c:choose>
 </div><%-- container --%>
 
 </body>

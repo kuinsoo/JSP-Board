@@ -62,6 +62,7 @@ public class BoardServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		List<BoardVo> boardList = boardService.selectAllBoard();
 		request.setAttribute("boardList", boardList);
+		request.setAttribute("boardPage", "postList");
 		request.getRequestDispatcher("/board/board.jsp").forward(request,response);
 	}
 

@@ -20,7 +20,7 @@ public interface PostServiceInf {
 	 * 게시글 검색
 	 * @return
 	 */
-	PostVo selectPost();
+	PostVo selectPost(String post_no);
 
 	/**
 	 * 전체 게시글 검색

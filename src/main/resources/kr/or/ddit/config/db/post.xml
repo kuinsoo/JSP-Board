@@ -13,20 +13,17 @@
         <result property="post_boardno" column="boardno"/>
         <result property="post_recursion" column="recursion"/>
         <result property="post_groupno" column="groupno"/>
+        <result property="post_sub" column="subtitle" />
     </resultMap>
 
     <!-- 게시글 검색 -->
-    <select id="selectPost" resultMap="mapPostVo">
-        select  lpad('└→',2*(level-1))|| TITLE as TITLE, post.*
-        from POST
-        start with RECURSION is null
-        connect by prior no = RECURSION
-        order siblings by GROUPNO desc
+    <select id="selectPost" resultMap="mapPostVo" parameterType="String">
+        select  * from POST where NO = #{post_no}
     </select>
 
     <!-- 전체 게시글 검색 -->
     <select id="selectAllPost" resultMap="mapPostVo">
-        select  lpad('└→',2*(level-1))|| TITLE as TITLE, post.*
+        select  lpad('└→',2*(level-1))|| TITLE as subtitle, post.*
         from POST
         start with RECURSION is null
         connect by prior no = RECURSION

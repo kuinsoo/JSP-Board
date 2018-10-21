@@ -38,6 +38,7 @@
 		<!-- Mapper 위치 지정 -->
 		<mapper resource="kr/or/ddit/config/db/member.xml" />
 		<mapper resource="kr/or/ddit/config/db/board.xml" />
+		<mapper resource="kr/or/ddit/config/db/post.xml" />
 
 	</mappers>
 	

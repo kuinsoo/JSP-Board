@@ -36,9 +36,9 @@ public class PostDao implements PostDaoInf{
 	 * @return
 	 */
 	@Override
-	public PostVo selectPost() {
+	public PostVo selectPost(String post_no) {
 		SqlSession session = factory.openSession();
-		PostVo postVo = session.selectOne("post.selectPost");
+		PostVo postVo = session.selectOne("post.selectPost",post_no);
 		session.close();
 		return postVo;
 	}

@@ -21,8 +21,17 @@ public class PostVo {
 	private String post_boardno;
 	private String post_recursion;
 	private String post_groupno;
+	private String post_sub;
 
 	public PostVo() {
+	}
+
+	public String getPost_sub() {
+		return post_sub;
+	}
+
+	public void setPost_sub(String post_sub) {
+		this.post_sub = post_sub;
 	}
 
 	public String getPost_no() {

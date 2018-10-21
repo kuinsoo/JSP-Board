@@ -26,8 +26,8 @@ public class PostService implements PostServiceInf {
 	}
 
 	@Override
-	public PostVo selectPost() {
-		return dao.selectPost();
+	public PostVo selectPost(String post_no) {
+		return dao.selectPost(post_no);
 	}
 
 	@Override

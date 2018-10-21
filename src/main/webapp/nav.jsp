@@ -7,6 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"  %>
 <% request.setCharacterEncoding("UTF-8"); %>
+<%-- 비회원 메인 강제 진입시 로그인 접속으로 돌려 보내기--%>
+<script>
+	$(document).ready(function(){
+		if( "${memVo}"== '' ) {
+			location.href="/"
+		}
+	});
+</script>
 
 <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
     <div class="container">

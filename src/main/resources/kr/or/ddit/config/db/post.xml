@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="post">
+    <resultMap id="mapPostVo" type="postVo">
+        <result property="post_no" column="no"/>
+        <result property="post_title" column="title"/>
+        <result property="post_content" column="content"/>
+        <result property="post_rdate" column="rdate"/>
+        <result property="post_writer" column="writer"/>
+        <result property="post_boardno" column="boardno"/>
+        <result property="post_recursion" column="recursion"/>
+        <result property="post_groupno" column="groupno"/>
+    </resultMap>
+
+    <!-- 게시글 검색 -->
+    <select id="selectPost" resultMap="mapPostVo">
+        select  lpad('└→',2*(level-1))|| TITLE as TITLE, post.*
+        from POST
+        start with RECURSION is null
+        connect by prior no = RECURSION
+        order siblings by GROUPNO desc
+    </select>
+
+    <!-- 전체 게시글 검색 -->
+    <select id="selectAllPost" resultMap="mapPostVo">
+        select  lpad('└→',2*(level-1))|| TITLE as TITLE, post.*
+        from POST
+        start with RECURSION is null
+        connect by prior no = RECURSION
+        order siblings by GROUPNO desc
+    </select>
+
+    <!-- 게시글 생성-->
+    <insert id="createPost" parameterType="postVo">
+        insert into POST values
+                                (#{post_title}, 'PT'||seqPost.nextval, #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion}, #{post_groupno})
+    </insert>
+
+
+    <!-- 게시글 수정 -->
+    <update id="editPost" parameterType="postVo"  >
+        update POST
+        set TITLE=#{post_title}, CONTENT=#{post_content}
+        where NO = #{post_no}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deletePost" parameterType="String">
+        delete from POST where NO = #{post_no}
+    </delete>
+
+</mapper>

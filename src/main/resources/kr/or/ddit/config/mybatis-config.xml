@@ -13,7 +13,7 @@
 		<typeAlias type="kr.or.ddit.board.model.BoardVo" alias="boardVo" />
 		<typeAlias type="kr.or.ddit.board.model.CommentsVo" alias="cmdVo" />
 		<typeAlias type="kr.or.ddit.member.model.MemberVo" alias="memVo" />
-		<typeAlias type="kr.or.ddit.board.model.PostVo" alias="ptVo" />
+		<typeAlias type="kr.or.ddit.board.model.PostVo" alias="postVo" />
 
 
 	</typeAliases>

@@ -15,14 +15,7 @@
 <head>
     <!-- 헤더  -->
     <%@include file="/header.jsp"%>
-    <%-- 비회원 메인 강제 진입시 로그인 접속으로 돌려 보내기--%>
-    <script>
-		$(document).ready(function(){
-			if( "${memVo}" == '' ) {
-				location.href="/"
-			}
-		});
-    </script>
+
 </head>
 <body>
 <%-- nav --%>

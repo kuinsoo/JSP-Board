@@ -5,13 +5,16 @@ import kr.or.ddit.board.service.BoardService;
 import kr.or.ddit.board.service.BoardServiceInf;
 import kr.or.ddit.board.service.PostService;
 import kr.or.ddit.board.service.PostServiceInf;
+import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.util.BoardUtil;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -30,10 +33,39 @@ import java.util.Map;
 public class PostServlet extends HttpServlet {
 	private PostServiceInf service = PostService.getInstance();
 	private BoardServiceInf boardService = BoardService.getInstance();
+	//전역 resultMap
+	private Map<String, String> resultMap =new HashMap<>();
+	private String bd_no = "";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		String uri = request.getRequestURI();
 
+		if (uri.equals("/postCreate")) {
+			locationPostCreate(request, response);
+		}
 	}
+
+	private void locationPostCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		;
+		String title =  request.getParameter("pc_title");
+		String content =  request.getParameter("smarteditor");
+		HttpSession session = request.getSession();
+		MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
+		PostVo postVo = new PostVo();
+		postVo.setPost_title(title);
+		postVo.setPost_title(content);
+		postVo.setPost_writer(memberVo.getMem_id());
+		postVo.setPost_boardno(bd_no);
+		postVo.setPost_recursion(null);
+		int resultCnt = service.createPost(postVo);
+		request.setAttribute("no", bd_no);
+		request.setAttribute("page", 1);
+		request.setAttribute("pageSize", 10);
+		request.getRequestDispatcher("/post").forward(request,response);
+	}
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
@@ -43,9 +75,7 @@ public class PostServlet extends HttpServlet {
 			locationPost(request, response);
 		} else if (uri.equals("/postList")) {
 			locationPostList(request, response);
-		} else if (uri.equals("/postCreate")) {
-			locationPostCreate(request, response);
-		}else if (uri.equals("/postEdit")) {
+		} else if (uri.equals("/postEdit")) {
 			locationPostEdit(request, response);
 		} else if (uri.equals("/postDelete")) {
 			locationPostDelete(request, response);
@@ -54,10 +84,9 @@ public class PostServlet extends HttpServlet {
 		}
 	}
 
-	//전역 resultMap
-	private Map<String, String> resultMap =new HashMap<>();
+
 	private void locationPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String bd_no = request.getParameter("no");
+		bd_no = request.getParameter("no");
 		String page = request.getParameter("page");
 		String pageSize = request.getParameter("pageSize");
 		resultMap.put("post_groupno", bd_no);
@@ -87,10 +116,6 @@ public class PostServlet extends HttpServlet {
 	private void locationPostDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
-	private void locationPostCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PostVo postVo = new PostVo();
-		String title =  request.getParameter("pc_tt");
-		String content =  request.getParameter("pc_ta");
-		postVo.setPost_title(title);
-	}
+
+
 }

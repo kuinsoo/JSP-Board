@@ -61,7 +61,7 @@
         <th scope="col">
             <div class="form-group">
                 <select class="custom-select texts" id="bd_use">
-                    <option selected="" >사용여부를 선택해주세요</option>
+                    <option value="Y" selected="" >사용여부를 선택해주세요</option>
                     <option value="Y" class="textSelect">사용</option>
                     <option value="N" class="textSelect">비사용</option>
                 </select>

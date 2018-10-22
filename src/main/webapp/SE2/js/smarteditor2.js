@@ -11650,6 +11650,7 @@ nhn.husky.SE2M_FontNameWithLayerUI = jindo.$Class({
 	setDefaultFont : function(sFontFamily, nFontSize){
 		var elBody = this.oApp.getWYSIWYGDocument().body;
 		elBody.style.fontFamily = sFontFamily;
+		elBody.style.color = white;
 		if(nFontSize>0){elBody.style.fontSize   = nFontSize + 'pt';}
 	}
 });

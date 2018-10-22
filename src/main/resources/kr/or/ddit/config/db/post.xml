@@ -27,7 +27,7 @@
         select * from
                       (select ROWNUM rnum,
                               A.*
-                       from  (select  lpad('└→',2*(level-1))|| TITLE as subtitle, post.*
+                       from  (select   level, lpad('└>',(level-1)*3, '　' )|| TITLE subtitle, post.*
                               from POST
                               where BOARDNO = #{post_groupno}
                               start with RECURSION is null
@@ -49,7 +49,7 @@
     <!-- 게시글 생성-->
     <insert id="createPost" parameterType="postVo">
         insert into POST values
-        (#{post_title}, 'PT'||seqPost.nextval, #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion}, #{post_groupno})
+        ('PT'||seqPost.nextval, #{post_title},  #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion}, 'PTG' || SEQGROUPPOST.nextval)
     </insert>
 
 

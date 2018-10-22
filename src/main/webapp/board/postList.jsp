@@ -64,7 +64,7 @@
 </style>
 <script>
     function createPost() {
-	    location.href= "/postCreate"
+	    location.href= "/postWrite"
     }
 </script>
 <table class="table table-hover">
@@ -82,7 +82,7 @@
     <c:forEach items="${postList}" var="postVo">
         <tr class="table-primary tbodyTr">
             <th scope="row">${postVo.getPost_rnum()}</th>
-            <td>${postVo.getPost_title()}</td>
+            <td>${postVo.getPost_sub()}</td>
             <td>${postVo.getPost_writer()}</td>
             <td><fmt:formatDate value="${postVo.getPost_rdate()}" /></td>
         </tr>

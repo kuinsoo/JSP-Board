@@ -2,14 +2,9 @@
 	* 화면명 : Smart Editor 2.8 에디터 연동 페이지
 	* 파일명 : /page/test/index.jsp
 --------------------------------------------------------------------------------%>
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Smart Editor</title>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.ico" />
 
 	<!-- jQuery -->
 	<!-- <script type="text/javascript" src="/js/jquery.js"></script>
@@ -66,22 +61,18 @@
 		}
 
 	</script>
-	<style>
-		.title_a {
-			width: 768px;
-		}
-	</style>
-</head>
-<body>
+<style>
+	#inputDefault {
+		width: 766px;
+	}
+</style>
 
-
-<form action="result.jsp" method="post" id="frm">
+<form action="/postCreate" method="post" id="frm">
 	<div class="form-group">
 		<label class="col-form-label" for="inputDefault">제목</label>
-		<input type="text" class="form-control title_a" placeholder="제목" id="inputDefault">
+		<input type="text" class="form-control" name="pc_title" placeholder="제목" id="inputDefault">
 	</div>
+
 	<textarea name="smarteditor" id="smarteditor" rows="10" cols="100" style="width:766px; height:412px;"></textarea>
 </form>
 <input type="button" id="savebutton" value="서버전송" />
-</body>
-</html>

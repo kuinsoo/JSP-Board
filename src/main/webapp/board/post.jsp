@@ -23,7 +23,7 @@
 <div class="container" id="">
     <c:choose>
         <c:when test="${boardPage eq 'postList'}">
-            <%@ include file="/board/postList.jsp"%>
+            <%@ include file="/board/postList.jsp" %>
         </c:when>
         <c:when test="${boardPage eq 'postCreate'}">
             <%@ include file="/board/postCreate.jsp" %>

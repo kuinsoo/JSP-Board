@@ -65,12 +65,12 @@
     </error-page>
 
     <!-- 500 에러 로그인 페이지로 보내기 -->
-    <error-page>
+<!--    <error-page>
 
         <error-code>500</error-code>
 
         <location>/kkuisland</location>
 
-    </error-page>
+    </error-page>-->
 </web-app>
 

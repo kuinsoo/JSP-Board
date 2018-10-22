@@ -9,4 +9,5 @@
 	out.println("<에디터 결과>");
 	out.println("<br/>");
 	out.println(request.getParameter("smarteditor"));	// html코드형식의 데이터
+	out.println(request.getParameter("pc_title"));
 %>

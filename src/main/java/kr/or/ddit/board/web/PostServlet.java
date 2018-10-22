@@ -11,10 +11,7 @@ import kr.or.ddit.util.BoardUtil;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +26,9 @@ import java.util.Map;
  * @Date : 2018-10-21 / 오전 8:40
  * @Version :
  */
-@WebServlet(urlPatterns = {"/postList", "/post", "/postCreate", "/postEdit", "/postDelete", "/postWrite"})
+
+@MultipartConfig(maxFileSize =1024 * 1024 * 5, maxRequestSize=1024*1024*5*5)
+@WebServlet(urlPatterns = {"/postList", "/post", "/postCreate", "/postEdit", "/postDelete", "/postWrite", "/postDetail"})
 public class PostServlet extends HttpServlet {
 	private PostServiceInf service = PostService.getInstance();
 	private BoardServiceInf boardService = BoardService.getInstance();
@@ -45,26 +44,45 @@ public class PostServlet extends HttpServlet {
 			locationPostCreate(request, response);
 		}
 	}
-
 	private void locationPostCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		;
+		request.setCharacterEncoding("UTF-8");
 		String title =  request.getParameter("pc_title");
 		String content =  request.getParameter("smarteditor");
 		HttpSession session = request.getSession();
 		MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
 		PostVo postVo = new PostVo();
 		postVo.setPost_title(title);
-		postVo.setPost_title(content);
+		postVo.setPost_content(content);
 		postVo.setPost_writer(memberVo.getMem_id());
 		postVo.setPost_boardno(bd_no);
-		postVo.setPost_recursion(null);
+		postVo.setPost_recursion("");
+//		for (Part part:
+//				request.getParts()) {
+//			part.getHeader("Content-disposition");
+//			String contentDisposition = part.getHeader("Content-disposition");
+//			String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
+//			System.out.println(fileName);
+//			String path = "/upload";
+//			part.write("D:\\T_Development\\d_Study\\JSP\\jsp_IntelliJ\\upload\\"+ fileName);
+//			part.delete();
+//		}
+		Part part = request.getPart("attach");
+		System.out.println("profile part : "+ part.getContentType());
+		System.out.println("Content-disposition : " + part.getHeader("Content-disposition"));
+		String contentDisposition = part.getHeader("Content-disposition");
+		String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
+		String path = "/upload";
+		part.write("D:\\T_Development\\d_Study\\JSP\\jsp_IntelliJ\\upload\\"+ fileName);
+		part.delete();
+
+
 		int resultCnt = service.createPost(postVo);
-		request.setAttribute("no", bd_no);
-		request.setAttribute("page", 1);
-		request.setAttribute("pageSize", 10);
-		request.getRequestDispatcher("/post").forward(request,response);
+		response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
 	}
+
+
+
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,6 +99,8 @@ public class PostServlet extends HttpServlet {
 			locationPostDelete(request, response);
 		} else if (uri.equals("/postWrite")) {
 			locationPostWrite(request,response);
+		} else if (uri.equals("/postDetail")) {
+			locationPostDetail(request,response);
 		}
 	}
 
@@ -115,6 +135,18 @@ public class PostServlet extends HttpServlet {
 	}
 	private void locationPostDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	}
+
+	private void locationPostDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		bd_no = request.getParameter("no");
+		String postNo = request.getParameter("postNo");
+		PostVo postVo = service.selectPost(postNo);
+		request.setAttribute("boardList", boardService.selectAllBoard());
+		request.setAttribute("postVo", postVo);
+		request.setAttribute("boardPage", "postDetail");
+		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
 
 

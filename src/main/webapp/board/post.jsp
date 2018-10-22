@@ -5,6 +5,7 @@
   Time: 오전 8:34
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -13,6 +14,13 @@
 <head>
     <!-- 헤더  -->
     <%@include file="/header.jsp"%>
+    <script>
+		$(document).ready(function(){
+			if( "${memVo}"== '' ) {
+				location.href="/"
+			}
+		});
+    </script>
 </head>
 <body>
 <%-- nav --%>
@@ -27,6 +35,9 @@
         </c:when>
         <c:when test="${boardPage eq 'postCreate'}">
             <%@ include file="/board/postCreate.jsp" %>
+        </c:when>
+        <c:when test="${boardPage eq 'postDetail'}">
+            <%@ include file="/board/postDetail.jsp" %>
         </c:when>
     </c:choose>
 </div><%-- container --%>

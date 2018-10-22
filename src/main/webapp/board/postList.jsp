@@ -82,7 +82,7 @@
     <c:forEach items="${postList}" var="postVo">
         <tr class="table-primary tbodyTr">
             <th scope="row">${postVo.getPost_rnum()}</th>
-            <td>${postVo.getPost_sub()}</td>
+           <td> <a href="/postDetail?postNo=${postVo.getPost_no()}" style="cursor: pointer; text-decoration:none;" >${postVo.getPost_sub()}</a></td>
             <td>${postVo.getPost_writer()}</td>
             <td><fmt:formatDate value="${postVo.getPost_rdate()}" /></td>
         </tr>

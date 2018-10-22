@@ -48,8 +48,8 @@
 
     <!-- 게시글 생성-->
     <insert id="createPost" parameterType="postVo">
-        insert into POST values
-        ('PT'||seqPost.nextval, #{post_title},  #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion}, 'PTG' || SEQGROUPPOST.nextval)
+        insert into POST  (NO, GROUPNO, TITLE, CONTENT, RDATE, WRITER, BOARDNO, RECURSION)
+        values (SEQPOST.nextval, SEQGROUPPOST.nextval, #{post_title},  #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion})
     </insert>
 
 

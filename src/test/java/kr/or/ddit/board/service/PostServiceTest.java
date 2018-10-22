@@ -63,15 +63,11 @@ public class PostServiceTest {
 	public void createPostTest() {
 		/*** Given ***/
 		PostVo postVo = new PostVo();
-		postVo.setPost_no		("test1");
-		postVo.setPost_title	("testService");
-		postVo.setPost_content	("test1");
-		postVo.setPost_rdate	(new Date());
+		postVo.setPost_title	("test122");
+		postVo.setPost_content	("<p> test</p>");
 		postVo.setPost_writer	("1");
 		postVo.setPost_boardno	("BD1");
 		postVo.setPost_recursion("");
-		postVo.setPost_groupno	("test1");
-		postVo.setPost_sub		("test1");
 		/*** When ***/
 		int resultCnt = postService.createPost(postVo);
 		/*** Then ***/

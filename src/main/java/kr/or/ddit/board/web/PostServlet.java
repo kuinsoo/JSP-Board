@@ -73,7 +73,7 @@ public class PostServlet extends HttpServlet {
 		String contentDisposition = part.getHeader("Content-disposition");
 		String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
 		String path = "/upload";
-		part.write("D:\\T_Development\\d_Study\\JSP\\jsp_IntelliJ\\upload\\"+ fileName);
+		part.write("D:\\T_Development\\d_Study\\JSP\\upload\\"+ fileName);
 		part.delete();
 
 
@@ -146,6 +146,9 @@ public class PostServlet extends HttpServlet {
 		request.setAttribute("boardList", boardService.selectAllBoard());
 		request.setAttribute("postVo", postVo);
 		request.setAttribute("boardPage", "postDetail");
+		HttpSession session = request.getSession();
+		MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
+		request.setAttribute("memVo", "memberVo");
 		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
 

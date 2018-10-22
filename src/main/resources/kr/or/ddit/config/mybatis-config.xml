@@ -11,7 +11,7 @@
 	<typeAliases>
 		<typeAlias type="kr.or.ddit.board.model.AttachmentVo" alias="attVo" />
 		<typeAlias type="kr.or.ddit.board.model.BoardVo" alias="boardVo" />
-		<typeAlias type="kr.or.ddit.board.model.CommentsVo" alias="cmdVo" />
+		<typeAlias type="kr.or.ddit.board.model.CommentsVo" alias="cmtVo" />
 		<typeAlias type="kr.or.ddit.member.model.MemberVo" alias="memVo" />
 		<typeAlias type="kr.or.ddit.board.model.PostVo" alias="postVo" />
 
@@ -39,6 +39,8 @@
 		<mapper resource="kr/or/ddit/config/db/member.xml" />
 		<mapper resource="kr/or/ddit/config/db/board.xml" />
 		<mapper resource="kr/or/ddit/config/db/post.xml" />
+		<mapper resource="kr/or/ddit/config/db/attachment.xml" />
+		<mapper resource="kr/or/ddit/config/db/comments.xml" />
 
 	</mappers>
 	

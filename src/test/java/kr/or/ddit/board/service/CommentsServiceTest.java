@@ -32,7 +32,7 @@ public class CommentsServiceTest {
 
 		/*** When ***/
 		String postNo = "60";
-		List<CommentsVo>cmtList = service.selectCmt(postNo);
+		List<CommentsVo>cmtList = service.selectCmtList(postNo);
 		/*** Then ***/
 		Assert.assertEquals(1,4);
 	}

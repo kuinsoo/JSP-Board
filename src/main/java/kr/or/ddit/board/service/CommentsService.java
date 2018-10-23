@@ -2,10 +2,8 @@ package kr.or.ddit.board.service;
 
 import kr.or.ddit.board.dao.CommentsDao;
 import kr.or.ddit.board.dao.CommentsDaoInf;
-import kr.or.ddit.board.model.AttachmentVo;
 import kr.or.ddit.board.model.CommentsVo;
 
-import javax.xml.stream.events.Comment;
 import java.util.List;
 
 /**
@@ -27,10 +25,13 @@ public class CommentsService implements CommentsServiceInf{
 		return commentsService;
 	}
 
-
+	@Override
+	public List<CommentsVo> selectCmtList(String postNo) {
+		return dao.selectCmtList(postNo);
+	}
 
 	@Override
-	public List<CommentsVo> selectCmt(String postNo) {
+	public CommentsVo selectCmt(String postNo) {
 		return dao.selectCmt(postNo);
 	}
 

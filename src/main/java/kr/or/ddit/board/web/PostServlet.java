@@ -1,10 +1,8 @@
 package kr.or.ddit.board.web;
 
+import kr.or.ddit.board.model.CommentsVo;
 import kr.or.ddit.board.model.PostVo;
-import kr.or.ddit.board.service.BoardService;
-import kr.or.ddit.board.service.BoardServiceInf;
-import kr.or.ddit.board.service.PostService;
-import kr.or.ddit.board.service.PostServiceInf;
+import kr.or.ddit.board.service.*;
 import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.util.BoardUtil;
 
@@ -32,6 +30,8 @@ import java.util.Map;
 public class PostServlet extends HttpServlet {
 	private PostServiceInf service = PostService.getInstance();
 	private BoardServiceInf boardService = BoardService.getInstance();
+	private CommentsServiceInf cmtService = CommentsService.getInstance();
+
 	//전역 resultMap
 	private Map<String, String> resultMap =new HashMap<>();
 	private String bd_no = "";
@@ -148,7 +148,11 @@ public class PostServlet extends HttpServlet {
 		request.setAttribute("boardPage", "postDetail");
 		HttpSession session = request.getSession();
 		MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
-		request.setAttribute("memVo", "memberVo");
+		request.setAttribute("memVo", memberVo);
+
+		// 게시글 번호에 맞는 댓글 가져오기
+		request.setAttribute("cmtList", cmtService.selectCmtList(postVo.getPost_no()));
+
 		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
 

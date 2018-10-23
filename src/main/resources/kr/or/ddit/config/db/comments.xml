@@ -14,8 +14,13 @@
     </resultMap>
 
     <!-- 댓글 리스트 -->
+    <select id="selectCmtList" parameterType="String" resultMap="cmtResult">
+        select * from COMMENTS where POSTNO = #{cmt_postno} order by to_number(no)
+    </select>
+
+    <!-- 댓글 찾기 -->
     <select id="selectCmt" parameterType="String" resultMap="cmtResult">
-        select * from COMMENTS where POSTNO = #{cmt_postno}
+        select * from COMMENTS where no = #{cmt_no}
     </select>
 
     <!-- 댓글 등록 -->
@@ -27,7 +32,7 @@
     <!-- 댓글 수정 -->
     <update id="updateCmt" parameterType="cmtVo">
         update COMMENTS
-        set POSTNO = #{cmt_postno}, CONTENT = #{cmt_content}, WRITER = #{cmt_writer}
+        set CONTENT = #{cmt_content}
         where NO = #{cmt_no}
     </update>
 

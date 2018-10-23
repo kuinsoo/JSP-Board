@@ -32,18 +32,25 @@ public class CommentsDao implements CommentsDaoInf {
 	}
 
 	/**
-	 * 댓글 리스트 검색
+	 * 댓글 검색
 	 * @param postNo
 	 * @return
 	 */
 	@Override
-	public List<CommentsVo> selectCmt(String postNo) {
+	public CommentsVo selectCmt(String postNo) {
 		SqlSession session = factory.openSession();
-		List<CommentsVo> attList = session.selectList("cmt.selectCmt",postNo);
+		CommentsVo attVo = session.selectOne("cmt.selectCmt",postNo);
+		session.close();
+		return attVo;
+	}
+
+	@Override
+	public List<CommentsVo> selectCmtList(String postNo) {
+		SqlSession session = factory.openSession();
+		List<CommentsVo> attList = session.selectList("cmt.selectCmtList",postNo);
 		session.close();
 		return attList;
 	}
-
 
 	/**
 	 * 댓글 생성

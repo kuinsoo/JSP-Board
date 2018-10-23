@@ -20,7 +20,14 @@ public interface CommentsDaoInf {
 	 * @param postNo
 	 * @return
 	 */
-	List<CommentsVo> selectCmt(String postNo);
+	List<CommentsVo> selectCmtList(String postNo);
+
+	/**
+	 * 댓글 검색
+	 * @param postNo
+	 * @return
+	 */
+	CommentsVo selectCmt(String postNo);
 
 	/**
 	 * 댓글 삽입

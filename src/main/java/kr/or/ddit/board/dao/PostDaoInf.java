@@ -1,5 +1,6 @@
 package kr.or.ddit.board.dao;
 
+import kr.or.ddit.board.model.BoardVo;
 import kr.or.ddit.board.model.PostVo;
 
 import java.util.List;
@@ -54,4 +55,11 @@ public interface PostDaoInf {
 	 * @return
 	 */
 	int deletePost(String post_no);
+
+	/**
+	 * 게시판 답글 생성
+	 * @param postVo
+	 * @return
+	 */
+	int createRePost(PostVo postVo);
 }

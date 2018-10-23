@@ -2,6 +2,7 @@ package kr.or.ddit.board.service;
 
 import kr.or.ddit.board.dao.PostDao;
 import kr.or.ddit.board.dao.PostDaoInf;
+import kr.or.ddit.board.model.BoardVo;
 import kr.or.ddit.board.model.PostVo;
 
 import java.util.List;
@@ -54,5 +55,10 @@ public class PostService implements PostServiceInf {
 	@Override
 	public List<PostVo> selectBoardInPost(Map<String,String> postMap) {
 		return dao.selectBoardInPost(postMap);
+	}
+
+	@Override
+	public int createRePost(PostVo postVo) {
+		return dao.createRePost(postVo);
 	}
 }

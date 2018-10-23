@@ -65,9 +65,10 @@ public class PostDaoTest {
 		postVo.setPost_content	("<p> test</p>");
 		postVo.setPost_writer	("1");
 		postVo.setPost_boardno	("BD1");
-		postVo.setPost_recursion("");
+		postVo.setPost_recursion("62");
+		postVo.setPost_groupno("");
 		/*** When ***/
-		int resultCnt = postDao.createPost(postVo);
+		int resultCnt = postDao.createRePost(postVo);
 		/*** Then ***/
 		Assert.assertEquals(1, resultCnt);
 	}

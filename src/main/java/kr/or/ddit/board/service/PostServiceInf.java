@@ -1,5 +1,6 @@
 package kr.or.ddit.board.service;
 
+import kr.or.ddit.board.model.BoardVo;
 import kr.or.ddit.board.model.PostVo;
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -55,4 +56,11 @@ public interface PostServiceInf {
 	 * @return
 	 */
 	int deletePost(String post_no);
+
+	/**
+	 * 게시글 답글 생성
+	 * @param postVo
+	 * @return
+	 */
+	int createRePost(PostVo postVo);
 }

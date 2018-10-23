@@ -1,6 +1,5 @@
 package kr.or.ddit.board.web;
 
-import kr.or.ddit.board.model.CommentsVo;
 import kr.or.ddit.board.model.PostVo;
 import kr.or.ddit.board.service.*;
 import kr.or.ddit.member.model.MemberVo;
@@ -47,16 +46,19 @@ public class PostServlet extends HttpServlet {
 	private void locationPostCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		String title =  request.getParameter("pc_title");
-		String content =  request.getParameter("smarteditor");
-		HttpSession session = request.getSession();
-		MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
-		PostVo postVo = new PostVo();
-		postVo.setPost_title(title);
-		postVo.setPost_content(content);
-		postVo.setPost_writer(memberVo.getMem_id());
-		postVo.setPost_boardno(bd_no);
-		postVo.setPost_recursion("");
+		String recursion = request.getParameter("recursion");
+		bd_no = request.getParameter("no");
+		if(recursion.equals("")){
+			String title =  request.getParameter("pc_title");
+			String content =  request.getParameter("smarteditor");
+			HttpSession session = request.getSession();
+			MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
+			PostVo postVo = new PostVo();
+			postVo.setPost_title(title);
+			postVo.setPost_content(content);
+			postVo.setPost_writer(memberVo.getMem_id());
+			postVo.setPost_boardno(bd_no);
+			postVo.setPost_recursion("");
 //		for (Part part:
 //				request.getParts()) {
 //			part.getHeader("Content-disposition");
@@ -67,18 +69,47 @@ public class PostServlet extends HttpServlet {
 //			part.write("D:\\T_Development\\d_Study\\JSP\\jsp_IntelliJ\\upload\\"+ fileName);
 //			part.delete();
 //		}
-		Part part = request.getPart("attach");
-		System.out.println("profile part : "+ part.getContentType());
-		System.out.println("Content-disposition : " + part.getHeader("Content-disposition"));
-		String contentDisposition = part.getHeader("Content-disposition");
-		String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
-		String path = "/upload";
-		part.write("D:\\T_Development\\d_Study\\JSP\\upload\\"+ fileName);
-		part.delete();
+			Part part = request.getPart("attach");
+			System.out.println("profile part : "+ part.getContentType());
+			System.out.println("Content-disposition : " + part.getHeader("Content-disposition"));
+			String contentDisposition = part.getHeader("Content-disposition");
+			String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
+			String path = "/upload";
+			part.write("D:\\T_Development\\d_Study\\JSP\\upload\\"+ fileName);
+			part.delete();
 
 
-		int resultCnt = service.createPost(postVo);
-		response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+			int resultCnt = service.createPost(postVo);
+			response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+		}else {
+			String title =  request.getParameter("pc_title");
+			String content =  request.getParameter("smarteditor");
+
+			HttpSession session = request.getSession();
+			MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
+			PostVo postVo = new PostVo();
+			postVo.setPost_title(title);
+			postVo.setPost_content(content);
+			postVo.setPost_writer(memberVo.getMem_id());
+			postVo.setPost_boardno(bd_no);
+			postVo.setPost_recursion(recursion);
+			postVo.setPost_groupno("");
+			System.out.println(recursion);
+			System.out.println("test" + bd_no);
+			Part part = request.getPart("attach");
+			System.out.println("profile part : "+ part.getContentType());
+			System.out.println("Content-disposition : " + part.getHeader("Content-disposition"));
+			String contentDisposition = part.getHeader("Content-disposition");
+			String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
+			String path = "/upload";
+			part.write("D:\\T_Development\\d_Study\\JSP\\upload\\"+ fileName);
+			part.delete();
+
+
+			int resultCnt = service.createRePost(postVo);
+			response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+		}
+
 	}
 
 
@@ -126,8 +157,11 @@ public class PostServlet extends HttpServlet {
 	}
 
 	private  void locationPostWrite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String bd_no = request.getParameter("no");
+		request.setAttribute("recursion",request.getParameter("recursion"));
 		request.setAttribute("boardList", boardService.selectAllBoard());
 		request.setAttribute("boardPage", "postCreate");
+		request.setAttribute("no" ,bd_no);
 		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
 	private void locationPostEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -140,12 +174,12 @@ public class PostServlet extends HttpServlet {
 	private void locationPostDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		bd_no = request.getParameter("no");
 		String postNo = request.getParameter("postNo");
 		PostVo postVo = service.selectPost(postNo);
 		request.setAttribute("boardList", boardService.selectAllBoard());
 		request.setAttribute("postVo", postVo);
 		request.setAttribute("boardPage", "postDetail");
+		request.setAttribute("no", bd_no);
 		HttpSession session = request.getSession();
 		MemberVo  memberVo = (MemberVo)session.getAttribute("memVo");
 		request.setAttribute("memVo", memberVo);

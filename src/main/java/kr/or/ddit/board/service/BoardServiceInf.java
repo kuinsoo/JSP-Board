@@ -48,4 +48,6 @@ public interface BoardServiceInf {
 	 * @return
 	 */
 	int deleteBoard(String boardId);
+
+
 }

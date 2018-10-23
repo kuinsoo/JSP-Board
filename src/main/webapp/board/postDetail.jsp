@@ -19,7 +19,9 @@
 			$("#fileForm").append($inputFile);
 		});
 
-
+        $('#rePost').click(function () {
+           location.href ="/postWrite?recursion=${postVo.getPost_no()}&no=${no}";
+        });
 
 		// Editor Setting
 		nhn.husky.EZCreator.createInIFrame({
@@ -72,6 +74,7 @@
         height: 31px
     }
 </style>
+<form action="/postCreate" method="post" id="frm" enctype="multipart/form-data">
 <div>
     <div class="form-group divForm">
         <fieldset>
@@ -97,7 +100,7 @@
             </div>
         </div>
         <div style="text-align: right; padding-bottom: 35px">
-            <button type="button" class="btn btn-outline-info">답글</button>
+            <button type="button" class="btn btn-outline-info" id="rePost">답글</button>
             <c:if test="${postVo.getPost_writer() eq memVo.getMem_id()}">
                 <button type="button" class="btn btn-outline-warning">수정</button>
                 <button type="button" class="btn btn-outline-danger">삭제</button>
@@ -126,3 +129,4 @@
         <button type="button" class="btn replyBtn btn-outline-success" onclick="cmtController(1)" >등록</button>
     </div>
 </div>
+</form>

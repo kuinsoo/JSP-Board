@@ -89,14 +89,13 @@
 
 </style>
 
-<form action="/postCreate" method="post" id="frm" enctype="multipart/form-data">
+<form action="/postCreate?no=${no}" method="post" id="frm" enctype="multipart/form-data">
 	<div class="form-group">
 		<label class="col-form-label" for="inputDefault">제목</label>
 		<input type="text" class="form-control" name="pc_title" placeholder="제목" id="inputDefault">
 	</div>
 
 	<textarea name="smarteditor" id="smarteditor" rows="10" cols="100" style="width:766px; height:412px;"></textarea>
-
 	<div style="width:766px;" >
 		<label>File input</label>
 		<div id="fileForm" class="form-group" style="width:600px; float: left;">
@@ -106,5 +105,6 @@
 			<button type="button" id="attachAdd"> 파일첨부추가</button>
 		</div>
 	</div>
+	<input type="text" name="recursion"  value="${recursion}" style="visibility: hidden;">
 </form>
 <input type="button" id="savebutton" class="btn btn-outline-success" value="서버전송" />

@@ -52,6 +52,11 @@
         values (SEQPOST.nextval, SEQGROUPPOST.nextval, #{post_title},  #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion})
     </insert>
 
+    <!-- 게시글 답글 생성 -->
+    <insert id="createRePost" parameterType="postVo">
+        insert into POST  (NO, GROUPNO, TITLE, CONTENT, RDATE, WRITER, BOARDNO, RECURSION)
+        values (SEQPOST.nextval, #{post_groupno},  #{post_title},  #{post_content}, to_char(sysdate,'yyyy-MM-dd'), #{post_writer}, #{post_boardno}, #{post_recursion})
+    </insert>
 
     <!-- 게시글 수정 -->
     <update id="editPost" parameterType="postVo"  >

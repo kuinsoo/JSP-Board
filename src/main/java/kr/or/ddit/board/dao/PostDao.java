@@ -1,5 +1,6 @@
 package kr.or.ddit.board.dao;
 
+import kr.or.ddit.board.model.BoardVo;
 import kr.or.ddit.board.model.PostVo;
 import kr.or.ddit.db.SqlSessionFactoryBean;
 import org.apache.ibatis.session.SqlSession;
@@ -105,6 +106,20 @@ public class PostDao implements PostDaoInf{
 	public int deletePost(String post_no) {
 		SqlSession session = factory.openSession();
 		int resultCnt = session.delete("post.deletePost",post_no);
+		session.commit();
+		session.close();
+		return  resultCnt;
+	}
+
+	/**
+	 * 게시 답글 생성
+	 * @param postVo
+	 * @return
+	 */
+	@Override
+	public int createRePost(PostVo postVo) {
+		SqlSession session = factory.openSession();
+		int resultCnt = session.insert("post.createRePost",postVo);
 		session.commit();
 		session.close();
 		return  resultCnt;

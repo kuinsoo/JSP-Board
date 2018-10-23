@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <style type="text/css">
     thead>tr:first-child>th {
@@ -63,9 +63,9 @@
     }
 </style>
 <script>
-    function createPost() {
-	    location.href= "/postWrite?recursion="
-    }
+	function createPost() {
+		location.href= "/postWrite?recursion="
+	}
 </script>
 <table class="table table-hover">
     <thead>
@@ -82,38 +82,63 @@
     <c:forEach items="${postList}" var="postVo">
         <tr class="table-primary tbodyTr">
             <th scope="row">${postVo.getPost_rnum()}</th>
-           <td> <a href="/postDetail?postNo=${postVo.getPost_no()}" style="cursor: pointer; text-decoration:none;" >${postVo.getPost_sub()}</a></td>
+            <td> <a href="/postDetail?postNo=${postVo.getPost_no()}" style="cursor: pointer; text-decoration:none;" >${postVo.getPost_sub()}</a></td>
             <td>${postVo.getPost_writer()}</td>
             <td><fmt:formatDate value="${postVo.getPost_rdate()}" /></td>
         </tr>
     </c:forEach>
+    </tbody>
 
     <%-- 페이징 처리--%>
     <tr class="table-primary tbodyTr">
         <th scope="row" colspan="3">
-            <div id="pageBar">
+            <div style="margin: 0px auto;">
                 <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">&laquo;</a>
-                    </li>
-                    <%--    <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>--%>
-                    <c:forEach items="${postAllList}" var="postVo" varStatus="i" step="9">
-                        <li class="page-item">
-                            <c:choose>
-                            <c:when test="${i.index+1 eq 1 }">
-                                <a class="page-link" href="/post?no=${postVo.post_boardno}&page=${i.index+1}&pageSize=10">1</a>
-                                </c:when>
-                                <c:otherwise>
-                                    <a class="page-link" href="/post?no=${postVo.post_boardno}&page=${i.index+1-8}&pageSize=10">${i.index+1-8}</a>
-                                    </c:otherwise>
-                                    </c:choose>
-                        </li>
+                    <c:choose>
+                        <c:when test="${page eq 1}">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">&laquo;</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <a class="page-link" href="/post?no=${post_groupno}&page=${page-1}&pageSize=10">&laquo;</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <%-- <li class="page-item active">
+                               <a class="page-link" href="#">1</a>
+                           </li>--%>
+                    <c:forEach begin="1" end="${postAllList.size()/10+1}" varStatus="i">
+                        <c:choose>
+                            <c:when test="${page eq i.index}">
+                                <li class="page-item active">
+                                    <a class="page-link" href="/post?no=${post_groupno}&page=${i.index}&pageSize=10">${i.index}</a>
+                                </li>
+                            </c:when>
+
+                            <c:when test="${page ne i.index}">
+                                <li class="page-item">
+                                    <a class="page-link" href="/post?no=${post_groupno}&page=${i.index}&pageSize=10">${i.index}</a>
+                                </li>
+                            </c:when>
+                        </c:choose>
                     </c:forEach>
-                    <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
-                    </li>
+
+                   <fmt:parseNumber var="maxPage" value="${postAllList.size()/10+1}" integerOnly="true" scope="page" />
+                    <c:choose>
+                        <c:when test="${page eq maxPage}">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">&raquo;</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <a class="page-link" href="/post?no=${post_groupno}&page=${page+1}&pageSize=10">&raquo;</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </th>
@@ -121,7 +146,6 @@
             <button type="button" class="btn btn-outline-success" onclick="createPost()">글쓰기</button>
         </th>
     </tr>
-    </tbody>
 
 
 </table>

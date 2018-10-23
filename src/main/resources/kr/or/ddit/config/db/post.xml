@@ -39,11 +39,7 @@
 
     <!-- 전체 게시글 검색 -->
     <select id="selectAllPost" resultMap="mapPostVo">
-        select  lpad('└→',2*(level-1))|| TITLE as subtitle, post.*
-        from POST
-        start with RECURSION is null
-        connect by prior no = RECURSION
-        order siblings by GROUPNO desc
+        select  *  from POST
     </select>
 
     <!-- 게시글 생성-->

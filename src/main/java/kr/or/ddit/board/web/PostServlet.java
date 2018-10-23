@@ -169,14 +169,15 @@ public class PostServlet extends HttpServlet {
 		}
 	}
 
-
+	String pages="";
 	private void locationPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		bd_no = request.getParameter("no");
-		String page = request.getParameter("page");
+		pages = request.getParameter("page");
 		String pageSize = request.getParameter("pageSize");
 		resultMap.put("post_groupno", bd_no);
-		resultMap.put("page",page);
+		resultMap.put("page",pages);
 		resultMap.put("pageSize", pageSize);
+
 		response.sendRedirect("/postList");
 	}
 
@@ -187,6 +188,8 @@ public class PostServlet extends HttpServlet {
 		request.setAttribute("postAllList",postAllList);
 		request.setAttribute("boardList", boardService.selectAllBoard());
 		request.setAttribute("boardPage", "postList");
+		request.setAttribute("page", Integer.parseInt(pages));
+		request.setAttribute("post_groupno", bd_no);
 		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
 

@@ -41,6 +41,8 @@ public class PostServlet extends HttpServlet {
 
 		if (uri.equals("/postCreate")) {
 			locationPostCreate(request, response);
+		}else if (uri.equals("/postEdit")) {
+			locationPostEdit(request, response);
 		}
 	}
 	private void locationPostCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -74,13 +76,18 @@ public class PostServlet extends HttpServlet {
 			System.out.println("Content-disposition : " + part.getHeader("Content-disposition"));
 			String contentDisposition = part.getHeader("Content-disposition");
 			String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
-			String path = "/upload";
-			part.write("D:\\T_Development\\d_Study\\JSP\\upload\\"+ fileName);
-			part.delete();
+			if(fileName.equals("")){
+				int resultCnt = service.createPost(postVo);
+				response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+			}else {
+				String path = "/upload";
+				part.write("D:\\T_Development\\d_Study\\JSP\\upload\\" + fileName);
+				part.delete();
+				int resultCnt = service.createPost(postVo);
+				response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+			}
 
 
-			int resultCnt = service.createPost(postVo);
-			response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
 		}else {
 			String title =  request.getParameter("pc_title");
 			String content =  request.getParameter("smarteditor");
@@ -101,12 +108,41 @@ public class PostServlet extends HttpServlet {
 			System.out.println("Content-disposition : " + part.getHeader("Content-disposition"));
 			String contentDisposition = part.getHeader("Content-disposition");
 			String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
-			String path = "/upload";
-			part.write("D:\\T_Development\\d_Study\\JSP\\upload\\"+ fileName);
+			if(fileName.equals("")){
+				int resultCnt = service.createPost(postVo);
+				response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+			}else {
+				part.write("D:\\T_Development\\d_Study\\JSP\\upload\\" + fileName);
+				part.delete();
+				int resultCnt = service.createPost(postVo);
+				response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+			}
+		}
+	}
+
+	private void locationPostEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String postNo = request.getParameter("postNo");
+		String title = request.getParameter("pc_title");
+		String content = request.getParameter("smarteditor");
+		String no = request.getParameter("no");
+		PostVo postVo = service.selectPost(postNo);
+		postVo.setPost_title(title);
+		postVo.setPost_content(content);
+		service.editPost(postVo);
+
+		Part part = request.getPart("attach");
+		System.out.println("profile part : "+ part.getContentType());
+		System.out.println("Content-disposition : " + part.getHeader("Content-disposition"));
+		String contentDisposition = part.getHeader("Content-disposition");
+		String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
+		if(fileName.equals("")){
+			int resultCnt = service.createPost(postVo);
+			response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
+		}else {
+			String path = "/upload1";
+			part.write("D:\\T_Development\\d_Study\\JSP\\upload\\" + fileName);
 			part.delete();
-
-
-			int resultCnt = service.createRePost(postVo);
+			int resultCnt = service.createPost(postVo);
 			response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
 		}
 
@@ -124,8 +160,6 @@ public class PostServlet extends HttpServlet {
 			locationPost(request, response);
 		} else if (uri.equals("/postList")) {
 			locationPostList(request, response);
-		} else if (uri.equals("/postEdit")) {
-			locationPostEdit(request, response);
 		} else if (uri.equals("/postDelete")) {
 			locationPostDelete(request, response);
 		} else if (uri.equals("/postWrite")) {
@@ -163,9 +197,6 @@ public class PostServlet extends HttpServlet {
 		request.setAttribute("boardPage", "postCreate");
 		request.setAttribute("no" ,bd_no);
 		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
-	}
-	private void locationPostEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	}
 	private void locationPostDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

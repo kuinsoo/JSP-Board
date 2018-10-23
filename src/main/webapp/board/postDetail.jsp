@@ -23,6 +23,10 @@
            location.href ="/postWrite?recursion=${postVo.getPost_no()}&no=${no}";
         });
 
+        $('#editPost').click(function () {
+	        location.href ="/postCreate?postNo=${postVo.getPost_no()}&no=${no}";
+        });
+
 		// Editor Setting
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef: oEditors, // 전역변수 명과 동일해야 함.
@@ -102,7 +106,7 @@
         <div style="text-align: right; padding-bottom: 35px">
             <button type="button" class="btn btn-outline-info" id="rePost">답글</button>
             <c:if test="${postVo.getPost_writer() eq memVo.getMem_id()}">
-                <button type="button" class="btn btn-outline-warning">수정</button>
+                <button type="button" class="btn btn-outline-warning" id="editPost">수정</button>
                 <button type="button" class="btn btn-outline-danger">삭제</button>
             </c:if>
         </div>

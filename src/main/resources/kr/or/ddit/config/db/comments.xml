@@ -21,7 +21,7 @@
     <!-- 댓글 등록 -->
     <insert id="insertCmt" parameterType="cmtVo">
         insert into COMMENTS (NO, POSTNO, CONTENT, WRITER, RDATE)
-        values (SEQCMT.nextval, #{cmt_postno}, #{cmt_content}, #{cmt_writer}, to_char(sysdate,'yyyy-MM-dd'));
+        values ( SEQCMT.nextval, #{cmt_postno}, #{cmt_content}, #{cmt_writer}, to_char(sysdate,'yyyy-MM-dd'))
     </insert>
 
     <!-- 댓글 수정 -->

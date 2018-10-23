@@ -1,20 +1,19 @@
-package kr.or.ddit.board.service;
+package kr.or.ddit.board.dao;
 
-import kr.or.ddit.board.model.AttachmentVo;
 import kr.or.ddit.board.model.CommentsVo;
 
 import java.util.List;
 
 /**
- * kr.or.ddit.board.service
+ * kr.or.ddit.board.dao
  * null.java
- * Desc : 댓글 인터페이스
+ * Desc : 댓글 다오 인터페이스
  *
  * @Author : "Mr.KKu"
- * @Date : 2018-10-23 / 오전 12:41
+ * @Date : 2018-10-23 / 오전 12:43
  * @Version :
  */
-public interface CommentsServiceInf {
+public interface CommentsDaoInf {
 
 	/**
 	 * 댓글 리스트 검색

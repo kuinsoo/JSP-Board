@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class BoardDao implements BoardDaoInf {
 	private static BoardDao boardDao = null;
-	public SqlSessionFactory factory = SqlSessionFactoryBean.sessionFactory;
+	private SqlSessionFactory factory = SqlSessionFactoryBean.sessionFactory;
 
 	public static BoardDao getInstance() {
 		if(boardDao==null){

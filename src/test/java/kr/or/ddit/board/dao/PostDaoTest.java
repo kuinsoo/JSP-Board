@@ -49,7 +49,7 @@ public class PostDaoTest {
 		/*** Given ***/
 
 		/*** When ***/
-		List<PostVo> postVoList = postDao.selectAllPost();
+		List<PostVo> postVoList = postDao.selectAllPost("BD1");
 		/*** Then ***/
 		Assert.assertEquals(1, postVoList.size());
 	}

@@ -51,7 +51,7 @@ public class PostServiceTest {
 		/*** Given ***/
 
 		/*** When ***/
-		List<PostVo> postVoList = postService.selectAllPost();
+		List<PostVo> postVoList = postService.selectAllPost("BD1");
 		/*** Then ***/
 		Assert.assertEquals(1, postVoList.size());
 	}

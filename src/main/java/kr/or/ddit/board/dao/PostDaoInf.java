@@ -27,7 +27,7 @@ public interface PostDaoInf {
 	 * 전체 게시글 검색
 	 * @return
 	 */
-	List<PostVo> selectAllPost();
+	List<PostVo> selectAllPost(String bd_no);
 
 	/**
 	 * 게시판 안에 전체 게시글 검색

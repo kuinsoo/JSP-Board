@@ -33,8 +33,8 @@ public class PostService implements PostServiceInf {
 	}
 
 	@Override
-	public List<PostVo> selectAllPost() {
-		return dao.selectAllPost();
+	public List<PostVo> selectAllPost(String bd_no) {
+		return dao.selectAllPost(bd_no);
 	}
 
 	@Override

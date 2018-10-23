@@ -64,7 +64,7 @@
 </style>
 <script>
 	function createPost() {
-		location.href= "/postWrite?recursion="
+		location.href= "/postWrite?no=${post_groupno}&recursion="
 	}
 </script>
 <table class="table table-hover">

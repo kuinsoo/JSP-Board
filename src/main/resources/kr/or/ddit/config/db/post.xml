@@ -38,8 +38,8 @@
     </select>
 
     <!-- 전체 게시글 검색 -->
-    <select id="selectAllPost" resultMap="mapPostVo">
-        select  *  from POST
+    <select id="selectAllPost" parameterType="String" resultMap="mapPostVo">
+        select  *  from POST where BOARDNO = #{post_groupno}
     </select>
 
     <!-- 게시글 생성-->

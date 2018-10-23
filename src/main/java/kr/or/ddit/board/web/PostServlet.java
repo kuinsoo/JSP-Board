@@ -184,7 +184,7 @@ public class PostServlet extends HttpServlet {
 	private void locationPostList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<PostVo> postList =  service.selectBoardInPost(resultMap);
 		request.setAttribute("postList", postList);
-		List<PostVo> postAllList = service.selectAllPost();
+		List<PostVo> postAllList = service.selectAllPost(bd_no);
 		request.setAttribute("postAllList",postAllList);
 		request.setAttribute("boardList", boardService.selectAllBoard());
 		request.setAttribute("boardPage", "postList");

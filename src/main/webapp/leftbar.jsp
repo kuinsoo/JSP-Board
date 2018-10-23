@@ -33,13 +33,7 @@
 	    $('.bdnames').hide();
     });
 
-	function postLink(num) {
-        var board_no = document.getElementById("bd_name"+num).value;
-        console.log(board_no);
-        var page = 1;
-        var pageSize = 10;
-        location.href = "/post?no="+board_no+"&page="+page+"&pageSize="+pageSize;
-	}
+
 </script>
 <div id="leftbar">
     <ul class="list-group">
@@ -53,8 +47,8 @@
             <c:choose>
                 <c:when test="${boardVo.bd_use == 'Y'}">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a  class="bdLink" onclick="postLink(${i.index})">${boardVo.bd_name}</a>
-                        <span class="badge badge-primary badge-pill">0</span>
+                        <a  class="nav-link" href="/post?no=${boardVo.bd_no}&page=1&pageSize=10" >${boardVo.bd_name}</a>
+                        <span class="badge badge-primary badge-pill"></span>
                     </li>
                     <input type="text" id="bd_name${i.index}" class="bdnames" value="${boardVo.bd_no}" />
                 </c:when>

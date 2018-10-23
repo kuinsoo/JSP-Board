@@ -50,9 +50,9 @@ public class PostDao implements PostDaoInf{
 	 * @return
 	 */
 	@Override
-	public List<PostVo> selectAllPost() {
+	public List<PostVo> selectAllPost(String bd_no) {
 		SqlSession session = factory.openSession();
-		List<PostVo> postList = session.selectList("post.selectAllPost");
+		List<PostVo> postList = session.selectList("post.selectAllPost",bd_no);
 		session.close();
 		return  postList;
 	}

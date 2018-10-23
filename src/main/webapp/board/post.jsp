@@ -39,6 +39,9 @@
         <c:when test="${boardPage eq 'postDetail'}">
             <%@ include file="/board/postDetail.jsp" %>
         </c:when>
+        <c:when test="${boardPage eq 'postUpdate'}">
+            <%@ include file="/SE2/updateIndex.jsp" %>
+        </c:when>
     </c:choose>
 </div><%-- container --%>
 

@@ -24,7 +24,7 @@
         });
 
         $('#editPost').click(function () {
-	        location.href ="/postEdit?postNo=${postVo.getPost_no()}&no=${no}";
+	        location.href ="/postUpdate?postNo=${postVo.getPost_no()}&no=${no}";
         });
 
 		// Editor Setting

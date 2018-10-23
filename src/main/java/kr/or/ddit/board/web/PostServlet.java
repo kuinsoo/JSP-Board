@@ -25,7 +25,7 @@ import java.util.Map;
  */
 
 @MultipartConfig(maxFileSize =1024 * 1024 * 5, maxRequestSize=1024*1024*5*5)
-@WebServlet(urlPatterns = {"/postList", "/post", "/postCreate", "/postEdit", "/postDelete", "/postWrite", "/postDetail"})
+@WebServlet(urlPatterns = {"/postList", "/post", "/postCreate", "/postEdit", "/postDelete", "/postWrite", "/postDetail" ,"/postUpdate"})
 public class PostServlet extends HttpServlet {
 	private PostServiceInf service = PostService.getInstance();
 	private BoardServiceInf boardService = BoardService.getInstance();
@@ -121,6 +121,8 @@ public class PostServlet extends HttpServlet {
 	}
 
 	private void locationPostEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		String postNo = request.getParameter("postNo");
 		String title = request.getParameter("pc_title");
 		String content = request.getParameter("smarteditor");
@@ -128,7 +130,6 @@ public class PostServlet extends HttpServlet {
 		PostVo postVo = service.selectPost(postNo);
 		postVo.setPost_title(title);
 		postVo.setPost_content(content);
-		service.editPost(postVo);
 
 		Part part = request.getPart("attach");
 		System.out.println("profile part : "+ part.getContentType());
@@ -136,13 +137,13 @@ public class PostServlet extends HttpServlet {
 		String contentDisposition = part.getHeader("Content-disposition");
 		String fileName = BoardUtil.getFileNameFromHeader(contentDisposition);
 		if(fileName.equals("")){
-			int resultCnt = service.createPost(postVo);
+			int resultCnt = service.editPost(postVo);
 			response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
 		}else {
 			String path = "/upload1";
 			part.write("D:\\T_Development\\d_Study\\JSP\\upload\\" + fileName);
 			part.delete();
-			int resultCnt = service.createPost(postVo);
+			int resultCnt = service.editPost(postVo);
 			response.sendRedirect("/post?no="+bd_no+"&page="+1+"&pageSize="+10);
 		}
 
@@ -166,7 +167,11 @@ public class PostServlet extends HttpServlet {
 			locationPostWrite(request,response);
 		} else if (uri.equals("/postDetail")) {
 			locationPostDetail(request,response);
+		} else if (uri.equals("/postUpdate")) {
+			locationPostUpdate(request,response);
 		}
+
+
 	}
 
 	String pages="";
@@ -201,6 +206,17 @@ public class PostServlet extends HttpServlet {
 		request.setAttribute("no" ,bd_no);
 		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
 	}
+
+	private  void locationPostUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String bd_no = request.getParameter("no");
+		String postNo =  request.getParameter("postNo");
+		request.setAttribute("postVo", service.selectPost(postNo));
+		request.setAttribute("boardList", boardService.selectAllBoard());
+		request.setAttribute("boardPage", "postUpdate");
+		request.setAttribute("no" ,bd_no);
+		request.getRequestDispatcher("/board/post.jsp").forward(request,response);
+	}
+
 	private void locationPostDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}

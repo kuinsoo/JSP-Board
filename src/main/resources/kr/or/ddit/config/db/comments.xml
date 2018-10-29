@@ -15,7 +15,8 @@
 
     <!-- 댓글 리스트 -->
     <select id="selectCmtList" parameterType="String" resultMap="cmtResult">
-        select * from COMMENTS where POSTNO = #{cmt_postno} order by to_number(no)
+        select /*+ INDEX (COMMENTS IDX_COMMENTS_01)*/* from  comments
+		where no =  #{cmt_postno} order by to_number(no)
     </select>
 
     <!-- 댓글 찾기 -->

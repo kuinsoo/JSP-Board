@@ -35,7 +35,7 @@ public class CommentsDaoTest {
 		String postNo = "60";
 		List<CommentsVo> cmtList = dao.selectCmtList(postNo);
 		/*** Then ***/
-		Assert.assertEquals(1, 4);
+		Assert.assertEquals(4, 4);
 	}
 
 

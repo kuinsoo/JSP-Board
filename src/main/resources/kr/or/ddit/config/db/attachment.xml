@@ -13,7 +13,8 @@
 
     <!-- 첨부 파일 검색 -->
     <select id="selectAttachment" parameterType="String" resultMap="attResult">
-        select * from ATTACHMENT where POSTNO = #{att_no}
+        Select /*+ INDEX (ATTACHMENT IDX_ATTACHMENT_01 ) */* From attachment
+		where POSTNO = #{att_postno}
     </select>
 
     <!-- 첨부파일 등록 -->
